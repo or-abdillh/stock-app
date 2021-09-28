@@ -1,13 +1,13 @@
 import { createStore } from 'vuex'
 
-const Store = {
+const store = createStore({
 	state() {
 		return {
 			userName: 'Sandhika Galih'
 		}
 	},
 	getters: {
-		getUserName( state ){
+		userName( state ){
 			return state.userName
 		}
 	},
@@ -16,6 +16,6 @@ const Store = {
 			state.userName = payload
 		}
 	}
-}
+})
 
-export default Store
+export default store

@@ -1,13 +1,15 @@
 <template>
-	<h1>Hello Home</h1>
-	<pre>
-		{{ store }}
-	</pre>	
+	<h1>Wellcome to Stock</h1>
+	<pre>{{ userName }}</pre>
 </template>
 
 <script setup>
+   
+   import { computed } from 'vue'
+   import { useStore } from 'vuex'
 
-	import store from '../store'
-
-		
+   const store = useStore()
+   const userName = computed(() => {
+      return store.getters.userName
+   })
 </script>
