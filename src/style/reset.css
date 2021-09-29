@@ -1,0 +1,18 @@
+/* Google Font Lato */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+
+/* MASTER RESET */
+* {
+   margin: 0;
+   padding: 0;
+   outline: 0;
+   box-sizing: border-box;
+   font-size: 100%;
+   font-family: "Lato", Sans-Serif;
+   font-weight: inherit;
+}
+
+*::after, *::before {
+   display: block;
+   content: "";
+}

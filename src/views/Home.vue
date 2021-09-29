@@ -1,7 +1,11 @@
 <template>
-	<h1 class="text-center font-medium" >Wellcome to Stock</h1>
+	<h1 class="btn" >Wellcome to Stock</h1>
 	<pre>{{ userName }}</pre>
 </template>
+
+<style scoped>
+   
+</style>
 
 <script setup>
    
