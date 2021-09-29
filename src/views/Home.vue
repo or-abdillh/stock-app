@@ -1,5 +1,5 @@
 <template>
-	<h1>Wellcome to Stock</h1>
+	<h1 class="text-center font-medium" >Wellcome to Stock</h1>
 	<pre>{{ userName }}</pre>
 </template>
 
