@@ -12,6 +12,7 @@
          </template>
       </div>
    </section>
+   <hr />
 </template>
 
 <script setup>
@@ -36,7 +37,7 @@
    }
    
    #category-bar .label {
-      @apply px-8 text-center rounded-xl bg-gray-300 border border-gray-600 py-2;
+      @apply bg-gray-100 px-8 text-center rounded-xl border border-gray-600 py-2;
    }
    
 </style>

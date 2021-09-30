@@ -2,7 +2,7 @@
   "name": "Stock App",
   "short_name": "Stock - Manage your items with easy way",
   "theme_color": "#fff",
-  "background_color": "#fff",
+  "background_color": "#272743",
   "display": "standalone",
   "orientation": "portrait",
   "scope": "/",

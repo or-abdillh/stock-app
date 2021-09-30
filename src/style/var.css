@@ -19,6 +19,10 @@
    background: var(--celuican);
 }
 
+.bg-alice-blue {
+   background: var(--alice-blue);
+}
+
 .text-prussian-blue {
    color: var(--prussian-blue);
 }

@@ -2,10 +2,10 @@
    <section class="s-container">
       <div class="flex justify-between">
          <div class="flex items-center">
-            <img class="rounded" src="/icons/icon-144x144.png" alt="logo-stock" width="35"/>
+            <img class="rounded-xl" src="/icons/icon-144x144.png" alt="logo-stock" width="40"/>
             <strong class="logo-text text-prussian-blue ml-2 text-xl font-bold">STOCK</strong>
          </div>
-         <div class="bg-prussian-blue text-gray-100 flex justify-center items-center p-3 rounded">
+         <div class="bg-prussian-blue text-gray-100 flex justify-center items-center p-3 rounded-xl">
             <i class="fa fa-user"></i>
          </div>
       </div>
