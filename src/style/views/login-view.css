@@ -14,5 +14,5 @@
 }
 
 .login .wellcome-wrapper {
-   @apply mt-20 mb-8 w-4/5 font-medium text-2xl;
+   @apply mt-20 mb-8 w-4/5 font-medium text-xl;
 }

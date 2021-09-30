@@ -6,7 +6,7 @@
       </div>
       
       <div class="wellcome-wrapper show-slide">
-         <p>Please login first before use our services</p>
+         <p class="text-prussian-blue">Please login first by entering your username and password</p>
       </div>
       
       <div class="form-wrapper">

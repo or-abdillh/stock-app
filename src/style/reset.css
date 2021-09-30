@@ -1,18 +1,11 @@
-/* Google Font Noto Sans Display */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@100;200;300;400;500;600;700&display=swap');
 /* MASTER RESET */
 * {
    margin: 0;
    padding: 0;
    outline: 0;
    box-sizing: border-box;
+   font-family: 'Poppins', Sans-Serif;
    font-size: 100%;
-   font-family: "Noto Sans Display", Sans-Serif;
    font-weight: inherit;
    user-select: none;
-}
-
-*::after, *::before {
-   display: block;
-   content: "";
 }

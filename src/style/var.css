@@ -10,3 +10,7 @@
 .bg-prussian-blue {
    background: var(--prussian-blue);
 }
+
+.text-prussian-blue {
+   color: var(--prussian-blue);
+}

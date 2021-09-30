@@ -1,5 +1,5 @@
 <template>
-	<h1 class="btn" >Wellcome Home</h1>
+	<HeaderHome></HeaderHome>
 </template>
 
 <style scoped>
@@ -7,5 +7,7 @@
 </style>
 
 <script setup>
+   
+   import HeaderHome from '../components/HeaderHome.vue'
    
 </script>
