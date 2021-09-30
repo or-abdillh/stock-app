@@ -8,4 +8,9 @@
    font-size: 100%;
    font-weight: inherit;
    user-select: none;
+   scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+   display: none;
 }
