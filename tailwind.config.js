@@ -6,6 +6,11 @@ module.exports = {
     './src/**/*.jsx'
   ],
   theme: {},
-  variants: {},
+  variants: {
+     extend: {
+      backgroundColor: ['active'],
+      opacity: ['active']
+    }
+  },
   plugins: [],
 }

@@ -1,0 +1,13 @@
+@keyframes show-slide {
+   from {
+      transform: scale(.85) translateX(-40%);
+      opacity: .85;
+   } to {
+      transform: scale(1) translateX(0);
+      opacity: 1;
+   }
+}
+
+.show-slide {
+   animation: show-slide .45s forwards;
+}

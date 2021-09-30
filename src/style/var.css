@@ -5,3 +5,8 @@
    --pale-blue: #BAE8E8;
    --celuican: #2D698D;
 }
+
+/* Class for use color */
+.bg-prussian-blue {
+   background: var(--prussian-blue);
+}
