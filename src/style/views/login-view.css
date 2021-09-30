@@ -1,0 +1,18 @@
+@import "../reset.css";
+
+.login .logo-wrapper {
+   @apply flex w-full justify-center items-center gap-2;
+}
+
+.login .logo-wrapper strong {
+   @apply text-xl font-bold;
+   letter-spacing: 1px;
+}
+
+.login .logo-wrapper img {
+   @apply rounded;
+}
+
+.login .wellcome-wrapper {
+   @apply mt-16 w-4/5 font-medium text-2xl;
+}

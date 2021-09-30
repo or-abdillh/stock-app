@@ -1,0 +1,38 @@
+/* Import variabel */
+@import "../var.css";
+
+/* ALL FORM INPUT STYLE */
+
+.form-wrapper {
+   @apply mt-5;
+}
+
+/* input with actions on one section */
+.form-wrapper .form-group {
+   @apply flex w-full;
+}
+
+.form-wrapper .form-group input[type=text], .form-wrapper .form-group input[type=password] {
+   @apply w-10/12 mb-0 mr-2;
+}
+
+.form-wrapper .form-group .btn-item {
+   @apply w-2/12 rounded-3xl flex justify-center items-center text-2xl text-gray-200;
+   background: var(--prussian-blue);
+} 
+
+/* All input type text must fully container */
+.form-wrapper .form-input input[type=text] {
+   @apply w-full;
+}
+
+/* All input type text or password style */
+.form-wrapper .form-input input, .form-wrapper .form-group input {
+   @apply bg-gray-200 rounded-3xl border border-gray-400 px-4 py-5;
+}
+
+/* Button main action on form wrapper */
+.form-wrapper .btn-form button {
+   @apply w-full py-4 rounded-3xl text-gray-200;
+   background: var(--prussian-blue);
+}
