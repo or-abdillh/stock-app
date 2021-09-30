@@ -11,6 +11,14 @@
    background: var(--prussian-blue);
 }
 
+.bg-pale-blue {
+   background: var(--pale-blue);
+}
+
+.bg-celuican {
+   background: var(--celuican);
+}
+
 .text-prussian-blue {
    color: var(--prussian-blue);
 }

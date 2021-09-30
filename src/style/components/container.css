@@ -3,5 +3,5 @@
 USE FOR WRAPPER EACH COMPONENTS OR VIEWS COMPONENT */
 
 .s-container {
-   @apply px-5 py-6;
+   @apply px-5 pt-6;
 }
