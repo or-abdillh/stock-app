@@ -3,6 +3,7 @@
 	<SearchBar></SearchBar>
 	<CategoryBar></CategoryBar>
 	<Menu></Menu>
+	<Card></Card>
 </template>
 
 <style scoped>
@@ -15,5 +16,6 @@
    import SearchBar from '../components/SearchBar.vue'
    import CategoryBar from '../components/CategoryBar.vue'
    import Menu from '../components/Menu.vue'
+   import Card from '../components/Card.vue'
    
 </script>
