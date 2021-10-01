@@ -1,6 +1,6 @@
 <template>
    <section class="s-container">
-      <div class="flex justify-between">
+      <div style="z-index: 999" class="flex justify-between fixed top-0 left-0 right-0 pb-3 s-container w-full bg-white">
          <div class="flex items-center">
             <img class="rounded-xl" src="/icons/icon-144x144.png" alt="logo-stock" width="40"/>
             <strong class="logo-text text-prussian-blue ml-2 text-xl font-bold">STOCK</strong>
@@ -9,7 +9,7 @@
             <i class="fa fa-user"></i>
          </div>
       </div>
-      <div class="mt-12 text-2xl text-prussian-blue">
+      <div class="mt-16 text-2xl text-prussian-blue">
          <p>Wellcome to <strong>Stock</strong> ,</p>
          <p>Sandhika Galih</p>
       </div>

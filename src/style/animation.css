@@ -11,3 +11,12 @@
 .show-slide {
    animation: show-slide .45s forwards;
 }
+
+.btn-active-label:active {
+   transform: scale(.85);
+   letter-spacing: 1px;
+}
+
+.btn-active-icon:active {
+   transform: scale(.85);
+}
