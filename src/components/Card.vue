@@ -12,17 +12,17 @@
                   <strong>Name product</strong>
                   <div class="flex mt-2">
                      <span>
-                        <i class="fas fa-dollar-sign"></i>
+                        <i class="mr-1 fas fa-dollar-sign"></i>
                         <small>25000</small>
                      </span>
                      <span>
-                        <i class="fas fa-cubes ml-3"></i>
+                        <i class="mr-1 fas fa-cubes ml-3"></i>
                         <small>25pcs</small>
                      </span>
                   </div>
                   <div class="mt-4 flex justify-between">
                      <span class="btn-active-label duration-300 block w-8/12 rounded bg-prussian-blue text-center text-sm py-1 text-gray-100">Update</span>
-                     <span class="btn-active-icon duration-300 block w-3/12 rounded bg-gray-500 text-gray-100 flex justify-center items-center">
+                     <span @click="btnDeleteItem('item', '12')" class="btn-active-icon duration-300 block w-3/12 rounded bg-gray-500 text-gray-100 flex justify-center items-center">
                         <i class="fa fa-trash text-sm"></i>
                      </span>
                   </div>
@@ -33,11 +33,29 @@
    </section>
 </template>
 
-<style>
+<script setup>
    
-   @import "../style/reset.css";
-   @import "../style/var.css";
-   @import "../style/components/container.css";
-   @import "../style/animation.css";
+   import { reactive } from 'vue'
+   import { useStore } from 'vuex'
    
-</style>
+   const store = useStore()
+   const emits = defineEmits(['btnDeleteItem'])
+   
+   const deleteModalObj = reactive({
+      tableName: '',
+      primaryKey: ''
+   })
+   
+   const btnDeleteItem = (table, id) => {
+      
+      let self = deleteModalObj
+      self.tableName = table
+      self.primaryKey = id
+      store.commit('setDeleteModalValue', self)
+      
+      setTimeout(() => {
+         emits('btnDeleteItem')
+      }, 500)
+   }
+   
+</script>
