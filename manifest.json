@@ -1,7 +1,7 @@
 {
   "name": "Manage your inventory with easy way",
   "short_name": "Stock App",
-  "theme_color": "#fff",
+  "theme_color": "#272743",
   "background_color": "#272743",
   "display": "standalone",
   "orientation": "portrait",
