@@ -16,12 +16,26 @@
    }
 }
 
+@keyframes spinner {
+   from {
+      transform: rotate(180deg);
+   } 85% {
+      transform: rotate(360deg);
+   } to {
+      transform: rotate(0deg);
+   }
+}
+
 .show-slide {
    animation: show-slide .45s forwards;
 }
 
 .show-from-bottom {
    animation: show-from-bottom .55s forwards;
+}
+
+.btn-active-label, .btn-active-icon {
+   cursor: pointer;
 }
 
 .btn-active-label:active {
@@ -31,4 +45,8 @@
 
 .btn-active-icon:active {
    transform: scale(.85);
+}
+
+.spinner {
+   animation: spinner .75s infinite;   
 }

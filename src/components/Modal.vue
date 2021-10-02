@@ -4,8 +4,18 @@
          <h1 class="text-xl mb-2 text-prussian-blue">Are you sure ?</h1>
          <p class="text-prussian-blue">Click 'next' to continue</p>
          <div class="flex mt-5 gap-3">
-            <span class="btn-active-label bg-prussian-blue duration-300 text-center rounded text-gray-100 w-4/12 py-1">Next</span>
-            <span @click="btnCloseModal()" class="btn-active-label duration-300 py-1">Close</span>
+            <span @click="btnNextModal()" class="btn-active-label bg-prussian-blue duration-300 text-center rounded text-gray-100 w-5/12 px-2 py-1">
+               <template v-if="!isLoad && !loadSucces">
+                  Next
+               </template>
+               <template v-else-if="isLoad && !loadSucces">
+                  <i class="spinner fas fa-spinner"></i>
+               </template>
+               <template v-else>
+                  <i class="fa fa-check"></i>
+               </template>
+            </span>
+            <span @click="btnCloseModal(500)" class="btn-active-label duration-300 py-1">Close</span>
          </div>
       </div>
    </section>
@@ -14,19 +24,14 @@
 <script setup>
    
    import { useStore } from 'vuex'
-   import { computed } from 'vue'
+   import { computed, ref } from 'vue'
    
    const store = useStore()
    const emits = defineEmits(['closeModal'])
+   const isLoad = ref(false)
+   const loadSucces = ref(false)
    
-   //Get parameter for delete record
-   const tableName = computed(() => {
-      return store.state.deleteModalValue.tableName
-   })
-   const primaryKey = computed(() => {
-      return store.state.deleteModalValue.primaryKey
-   })
-   
+   //This is props
    defineProps({
       isShowModal: {
          default: false,
@@ -34,18 +39,37 @@
       }
    })
    
-   const btnCloseModal = () => {
-      
-      let obj = {
-         tableName: '',
-         primaryKey: ''
-      }
-      
-      store.commit('setDeleteModalValue', obj)
+   //Get parameter for delete record
+   const tableName = computed(() => {
+      return store.getters.tableName
+   })
+   const primaryKey = computed(() => {
+      return store.getters.primaryKey
+   })
+   
+   //Handler for next button modal
+   const btnNextModal = () => {
+      setTimeout(() => {
+         isLoad.value = !isLoad.value
+         //Actions here
+         setTimeout(() => {
+            loadSucces.value = true
+            
+            setTimeout(() => {
+               emits('closeModal')
+               loadSucces.value = false
+               isLoad.value = false
+            }, 500)
+         }, 1500)
+      }, 350)
+   }
+   
+   //Handler for button close modal
+   const btnCloseModal = delay => {
       
       setTimeout(() => {
          emits('closeModal')
-      }, 500)
+      }, delay)
    }
    
 </script>
