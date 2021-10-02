@@ -23,6 +23,12 @@
    background: var(--alice-blue);
 }
 
+.bg-wallpaper {
+   background-image: linear-gradient(
+     to bottom, #536976, #292E49
+   );
+}
+
 .text-prussian-blue {
    color: var(--prussian-blue);
 }

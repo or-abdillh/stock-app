@@ -1,5 +1,5 @@
 <template>
-   <section id="menu" class="s-container mb-6">
+   <section id="menu" class="show-slide s-container mb-6">
       <div class="btn-active-icon label-wrapper mb-4">
          <span class="bg-celuican label">
             <i class="fa fa-plus"></i>

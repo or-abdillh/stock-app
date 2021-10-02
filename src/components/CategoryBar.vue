@@ -1,5 +1,5 @@
 <template>
-   <section id="category-bar" class="s-container">
+   <section id="category-bar" class="show-slide s-container">
       <div class="mt-3 text-xl flex justify-between items-center">
          <p class="font-medium">Category</p>
          <i class="fa fa-chevron-right"></i>

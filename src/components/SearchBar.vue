@@ -1,5 +1,5 @@
 <template>
-   <section class="s-container">
+   <section class="show-slide s-container">
       <div class="form-wrapper">
          <div class="form-group">
          <input type="text" class="form-input" placeholder="Type your name items" />

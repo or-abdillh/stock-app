@@ -1,6 +1,6 @@
 <template>
    <section :class="isShowModal ? 'block' : 'hidden'" style="z-index: 99999" class="fixed duration-300 bg-gray-800 bg-opacity-50 inset-0">
-      <div class="show-from-bottom bg-gray-100 w-8/12 mx-auto mt-24 rounded-xl shadow px-6 py-4">
+      <div class="show-from-bottom bg-gray-100 w-9/12 mx-auto mt-24 rounded-xl shadow px-6 py-6">
          <h1 class="text-xl mb-2 text-prussian-blue">Are you sure ?</h1>
          <p class="text-prussian-blue">Click 'next' to continue</p>
          <div class="flex mt-5 gap-3">

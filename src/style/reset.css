@@ -14,3 +14,7 @@
 *::-webkit-scrollbar {
    display: none;
 }
+
+body {
+   background: white;
+}

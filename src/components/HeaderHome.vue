@@ -9,7 +9,7 @@
             <i class="fa fa-user"></i>
          </div>
       </div>
-      <div class="mt-16 text-2xl text-prussian-blue">
+      <div class="show-slide mt-16 text-2xl text-prussian-blue">
          <p>Wellcome to <strong>Stock</strong> ,</p>
          <p>Sandhika Galih</p>
       </div>
