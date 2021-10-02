@@ -1,4 +1,6 @@
 import { createStore } from 'vuex'
+import getters from './getters.js'
+import mutations from './mutations.js'
 
 const store = createStore({
 	state() {
@@ -10,26 +12,8 @@ const store = createStore({
 			}
 		}
 	},
-	getters: {
-		userName( state ){
-			return state.userName
-		}
-	},
-	mutations: {
-		setUserName( state, payload ){
-			state.userName = payload
-		},
-		setDeleteModalValue( state, payload ){
-		   let self = state.deleteModalValue
-		   self.tableName = payload.tableName
-		   self.primaryKey = payload.primaryKey
-		},
-		resetDeleteModalValue( state ){
-		   let self = state.deleteModalValue
-		   self.tableName = ''
-		   self.primaryKey = ''
-		}
-	}
+	getters,
+	mutations
 })
 
 export default store
