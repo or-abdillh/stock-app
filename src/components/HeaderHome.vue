@@ -5,7 +5,7 @@
             <img class="rounded-xl" src="/icons/icon-144x144.png" alt="logo-stock" width="40"/>
             <strong class="logo-text text-prussian-blue ml-2 text-xl font-bold">STOCK</strong>
          </div>
-         <div class="bg-prussian-blue text-gray-100 flex justify-center items-center p-3 rounded-xl">
+         <div @click="btnUserProfile()" class="btn-active-icon duration-300 bg-prussian-blue text-gray-100 flex justify-center items-center p-3 rounded-xl">
             <i class="fa fa-user"></i>
          </div>
       </div>
@@ -24,3 +24,17 @@
    @import "../style/components/heading.css";
    
 </style>
+
+<script setup>
+   
+   import { useRouter } from 'vue-router'
+   
+   //Event handler for button profile
+   const router = useRouter()
+   const btnUserProfile = () => {
+      setTimeout(() => {
+         router.push({ name: 'profile' })
+      }, 350)
+   }
+   
+</script>
