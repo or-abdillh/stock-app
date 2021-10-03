@@ -8,10 +8,10 @@
          <div class="flex mt-5 gap-3">
             <!-- Modal actions -->
             <span @click="btnNextModal()" class="btn-active-label bg-prussian-blue duration-300 text-center rounded text-gray-100 w-5/12  px-2 py-1">
-               <template v-if="!isLoad && !loadSucces">
+               <template v-if="!isLoad && !loadSuccess">
                   Next
                </template>
-               <template v-else-if="isLoad && !loadSucces">
+               <template v-else-if="isLoad && !loadSuccess">
                   <i class="spinner fas fa-spinner"></i>
                </template>
                <template v-else>
@@ -35,11 +35,12 @@
    
    import { useStore } from 'vuex'
    import { computed, ref } from 'vue'
+   import ButtonNextModal from '../helper/buttonNextModal.js'
    
    const store = useStore()
    const emits = defineEmits(['closeModal'])
    const isLoad = ref(false)
-   const loadSucces = ref(false)
+   const loadSuccess = ref(false)
    
    //This is props
    defineProps({
@@ -59,19 +60,8 @@
    
    //Handler for next button modal
    const btnNextModal = () => {
-      setTimeout(() => {
-         isLoad.value = !isLoad.value
-         //Actions here
-         setTimeout(() => {
-            loadSucces.value = true
-            
-            setTimeout(() => {
-               emits('closeModal')
-               loadSucces.value = false
-               isLoad.value = false
-            }, 500)
-         }, 1500)
-      }, 350)
+      const cb = () => alert('ok')
+      ButtonNextModal(cb, isLoad, loadSuccess, emits, 'closeModal')
    }
    
    //Handler for button close modal

@@ -28,7 +28,7 @@
             
             <div class="mt-10">
                <!-- Button change name -->
-               <div class="btn-active-label mb-3 duration-300 flex items-center gap-3">
+               <div @click="btnPromptChangeName()" class="btn-active-label mb-3 duration-300 flex items-center gap-3">
                   <span class="label bg-prussian-blue">
                      <i class="fas fa-user-edit"></i>
                   </span>
@@ -53,46 +53,39 @@
       </div>
    </section>
    <!-- Modal for change name or change password -->
-   <Prompt></Prompt>
+   <PromptChangeName v-on:close-prompt="btnPromptChangeName()" :show-prompt="showPromptChangeName" ></PromptChangeName>
 </template>
 
 <style>
    
-   .wallpaper {
-      @apply bg-cover bg-no-repeat rounded-2xl shadow-xl w-full h-48;
-      background-image: url('/wallpaper.jpeg');
-   }
+   @import "../style/views/profile-view.css"
    
-   .card-profile-wrapper {
-      @apply left-2/4 w-9/12 top-16 absolute;
-      transform: translateX(-50%);
-   }
-   
-   .card-profile {
-      @apply bg-gray-50 text-center border border-gray-400 w-full px-3 py-4 rounded-2xl;
-   }
-   
-   .box-info {
-      @apply rounded-2xl px-3 py-4 text-center bg-gray-50 border border-gray-400 shadow;
-      min-width: 48%;
-   }
-   
-   #profile .label {
-      @apply w-3/12 text-gray-100 px-5 py-4 rounded-xl flex items-center justify-center;
-   }
 </style>
 
 <script setup>
    
    import Navbar from '../components/Navbar.vue'
-   import Prompt from '../components/Prompt.vue'
+   import PromptChangeName from '../components/PromptChangeName.vue'
    import { useRouter } from 'vue-router'
+   import { ref } from 'vue'
    
    const router = useRouter()
+   
+   //Handler for log out button
    const btnLogout = () => {
       setTimeout(() => {
          router.push({ name: 'login' })
       }, 500)
    }
+   
+   //Handler for change name button
+   const btnPromptChangeName = () => {
+      setTimeout(() => {
+         showPromptChangeName.value = !showPromptChangeName.value
+      }, 300)
+   }
+   
+   //Handler for show prompt change name
+   const showPromptChangeName = ref(false)
    
 </script>

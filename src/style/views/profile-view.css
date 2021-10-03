@@ -1,0 +1,24 @@
+/* Profile style class */
+
+.wallpaper {
+   @apply bg-cover bg-no-repeat rounded-2xl shadow-xl w-full h-48;
+   background-image: url('/wallpaper.jpeg');
+}
+
+.card-profile-wrapper {
+   @apply left-2/4 w-9/12 top-16 absolute;
+   transform: translateX(-50%);
+}
+
+.card-profile {
+   @apply bg-gray-50 text-center border border-gray-400 w-full px-3 py-4 rounded-2xl;
+}
+
+.box-info {
+   @apply rounded-2xl px-3 py-4 text-center bg-gray-50 border border-gray-400 shadow;
+   min-width: 48%;
+}
+
+#profile .label {
+   @apply w-3/12 text-gray-100 px-5 py-4 rounded-xl flex items-center justify-center;
+}

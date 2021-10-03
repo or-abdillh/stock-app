@@ -13,3 +13,7 @@
    .modal-title {
       @apply text-xl mb-2;
    }
+   
+   [data-role=changeName]:disabled {
+      opacity: .55!important;
+   }
