@@ -1,8 +1,8 @@
 <template>
 	<HeaderHome></HeaderHome>
 	<SearchBar></SearchBar>
-	<CategoryBar></CategoryBar>
 	<Menu></Menu>
+	<CategoryBar></CategoryBar>
 	<Card v-on:btn-delete-item="showModalDelete = !showModalDelete" ></Card>
 	<Modal v-on:closeModal="showModalDelete = !showModalDelete" :is-show-modal="showModalDelete"></Modal>
 </template>

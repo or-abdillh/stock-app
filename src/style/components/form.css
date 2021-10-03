@@ -24,7 +24,7 @@
 
 /* All input type text or password style */
 .form-wrapper .form-input input, .form-wrapper .form-group input {
-   @apply bg-gray-200 rounded-2xl border border-gray-400 px-4 py-5;
+   @apply bg-gray-50 rounded-2xl border border-gray-400 px-4 py-5;
 }
 
 /* Button main action on form wrapper */

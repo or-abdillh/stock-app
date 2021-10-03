@@ -24,9 +24,9 @@
                </div>
             </div>
             
-            <div class="mt-5">
+            <div class="mt-10">
                <div class="btn-active-label mb-3 duration-300 flex items-center gap-3">
-                  <span class="label bg-green-500">
+                  <span class="label bg-prussian-blue">
                      <i class="fas fa-user-edit"></i>
                   </span>
                   <p class="text-xl">Change name</p>
@@ -65,7 +65,7 @@
    }
    
    #profile .label {
-      @apply w-2/12 text-gray-100 p-3 rounded-xl flex items-center justify-center;
+      @apply w-3/12 text-gray-100 px-3 py-4 rounded-xl flex items-center justify-center;
    }
 </style>
 

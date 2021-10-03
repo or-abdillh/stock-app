@@ -37,7 +37,7 @@
    }
    
    #category-bar .label {
-      @apply bg-gray-100 px-8 text-center rounded-xl border border-gray-600 py-2;
+      @apply bg-white px-8 text-center rounded-xl border border-gray-500 py-2;
    }
    
 </style>

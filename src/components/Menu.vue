@@ -24,7 +24,7 @@
    @import "../style/animation.css";
    
    #menu .label {
-      @apply text-gray-100 px-3 py-2 rounded-xl;
+      @apply flex items-center justify-center w-2/12 text-gray-100 px-3 py-4 rounded-xl;
    }
    
    #menu .label-wrapper {

@@ -6,9 +6,9 @@
       </div>
       <div class="w-full flex flex-wrap justify-between gap-1 mt-4">
          <template v-for="card in 8" :key="card">
-            <div class="show-slide overflow-hidden rounded-xl mb-3 border border-gray-300 shadow" style="max-width: 48%">
+            <div class="show-slide overflow-hidden rounded-xl mb-3 border border-gray-300 shadow-xl" style="max-width: 48%">
                <img class="w-full" src="/product.jpg" alt="product" />
-               <div class="py-3 px-3 mb-3">
+               <div class="pt-2 pb-4 px-3 bg-white">
                   <strong>Name product</strong>
                   <div class="flex mt-2">
                      <span>
