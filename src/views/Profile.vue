@@ -46,7 +46,7 @@
 <style>
    
    .wallpaper {
-      @apply rounded-2xl shadow-xl w-full h-48;
+      @apply bg-cover bg-no-repeat rounded-2xl shadow-xl w-full h-48;
       background-image: url('/wallpaper.jpeg');
    }
    
