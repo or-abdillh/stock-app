@@ -1,0 +1,11 @@
+/* Header home style class */
+
+.fixed-header-wrapper {
+   @apply fixed top-0 left-0 right-0;
+   z-index: 999;
+}
+
+.header-home-wrapper {
+   @apply flex justify-between bg-opacity-50 pb-5 w-full lg:w-5/12 md:w-7/12 md:mx-auto;
+   backdrop-filter: blur(12px);
+}

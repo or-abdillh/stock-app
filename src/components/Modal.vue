@@ -1,9 +1,12 @@
 <template>
-   <section :class="isShowModal ? 'block' : 'hidden'" style="z-index: 99999" class="fixed duration-300 bg-gray-800 bg-opacity-50 inset-0">
-      <div class="show-from-bottom bg-gray-100 w-9/12 md:w-5/12 mx-auto mt-24 rounded-xl shadow px-6 py-6">
-         <h1 class="text-xl mb-2 text-prussian-blue">Are you sure ?</h1>
+   <!-- Layer -->
+   <section :class="isShowModal ? 'block' : 'hidden'" style="z-index: 99999" class="modal-layer">
+      <!-- Modal wrapper -->
+      <div class="show-from-bottom modal-wrapper">
+         <h1 class="modal-title text-prussian-blue">Are you sure ?</h1>
          <p class="text-prussian-blue">Click 'next' to continue</p>
          <div class="flex mt-5 gap-3">
+            <!-- Modal actions -->
             <span @click="btnNextModal()" class="btn-active-label bg-prussian-blue duration-300 text-center rounded text-gray-100 w-5/12  px-2 py-1">
                <template v-if="!isLoad && !loadSucces">
                   Next
@@ -15,11 +18,18 @@
                   <i class="fa fa-check"></i>
                </template>
             </span>
+            <!-- Close modal button -->
             <span @click="btnCloseModal(500)" class="btn-active-label duration-300 py-1">Close</span>
          </div>
       </div>
    </section>
 </template>
+
+<style scoped>
+   
+   @import "../style/components/modal.css"
+   
+</style>
 
 <script setup>
    

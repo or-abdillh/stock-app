@@ -10,13 +10,3 @@
       </div>
    </section>
 </template>
-
-<style>
-   
-   @import "../style/reset.css";
-   @import "../style/var.css";
-   @import "../style/components/container.css";
-   @import "../style/components/form.css";
-   @import "../style/animation.css";
-   
-</style>

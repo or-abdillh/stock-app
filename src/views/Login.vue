@@ -6,7 +6,9 @@
       </div>
       
       <div class="wellcome-wrapper show-slide">
-         <p class="text-prussian-blue">Please login first by entering your username and password</p>
+         <p class="text-prussian-blue text-2xl">
+            Manage your inventory with easy way 👏
+         </p>
       </div>
       
       <div class="form-wrapper">
@@ -15,7 +17,7 @@
          </div>
          <div class="form-group mb-8 show-slide">
             <input v-model="formLogin.password" :type="isShowPassword ? 'text' : 'password'" placeholder="Password"/>
-            <span @click="isShowPassword = !isShowPassword" class="btn-item bg-prussian-blue">
+            <span @click="isShowPassword = !isShowPassword" class="btn-item btn-active-icon  bg-prussian-blue">
                <i :class="isShowPassword ? 'fa-eye' : 'fa-eye-slash'" class="fa"></i>
             </span>
          </div>
@@ -27,11 +29,13 @@
          </div>
       </div>
    </section>
+   <About></About>
 </template>
 
 <script setup >
    
    import { ref, reactive, computed } from 'vue'
+   import About from '../components/About.vue'
    
    const isShowPassword = ref(false)
    

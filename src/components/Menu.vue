@@ -18,11 +18,6 @@
 
 <style>
    
-   @import "../style/reset.css";
-   @import "../style/var.css";
-   @import "../style/components/container.css";
-   @import "../style/animation.css";
-   
    #menu .label {
       @apply flex items-center justify-center w-2/12 text-gray-100 px-3 py-4 rounded-xl;
    }

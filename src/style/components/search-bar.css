@@ -1,0 +1,10 @@
+/* Search bar style class */
+
+#category-bar .active {
+   @apply text-gray-100 font-semibold;
+   background: var(--prussian-blue)!important;
+}
+   
+#category-bar .label {
+   @apply bg-white px-8 text-center rounded-xl border border-gray-500 py-2;
+}

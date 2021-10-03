@@ -1,0 +1,9 @@
+/* Navbar style class */
+
+.fixed-navbar-wrapper {
+   @apply fixed left-0 right-0 top-0;
+}
+
+.dynamic-navbar-wrapper {
+   @apply lg:w-5/12 md:w-7/12 md:mx-auto pb-5 flex items-center;
+}

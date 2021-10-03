@@ -26,18 +26,7 @@
 </script>
 
 <style>
-   
-   @import "../style/reset.css";
-   @import "../style/var.css";
-   @import "../style/components/container.css";
-   
-   #category-bar .active {
-      @apply text-gray-100 font-semibold;
-      background: var(--prussian-blue)!important;
-   }
-   
-   #category-bar .label {
-      @apply bg-white px-8 text-center rounded-xl border border-gray-500 py-2;
-   }
+
+   @import "../style/components/search-bar.css"
    
 </style>

@@ -10,12 +10,8 @@
 }
 
 .form-wrapper .form-group .btn-item {
-   @apply w-2/12 rounded-2xl flex justify-center items-center text-2xl text-gray-200;
+   @apply w-2/12 rounded-2xl duration-300 flex justify-center items-center text-2xl text-gray-200;
 } 
-
-.form-wrapper .form-group .btn-item:active i {
-   transform: scale(1.2);
-}
 
 /* All input type text must fully container */
 .form-wrapper .form-input input[type=text] {
@@ -24,7 +20,7 @@
 
 /* All input type text or password style */
 .form-wrapper .form-input input, .form-wrapper .form-group input {
-   @apply bg-gray-50 rounded-2xl border border-gray-400 px-4 py-5;
+   @apply bg-white rounded-2xl border border-gray-400 px-4 py-5;
 }
 
 /* Button main action on form wrapper */

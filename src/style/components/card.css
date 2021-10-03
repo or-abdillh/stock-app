@@ -1,0 +1,10 @@
+/* Card style class */
+
+.card-wrapper {
+   @apply w-full flex flex-wrap justify-between gap-1 mt-4;
+}
+
+.card {
+   @apply overflow-hidden rounded-xl mb-3 border border-gray-300 shadow-xl;
+   max-width: 48%;
+}

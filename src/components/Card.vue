@@ -1,14 +1,16 @@
 <template>
    <section id="card" class="s-container">
+      <!-- Section title -->
       <div class="mt-3 text-xl flex justify-between items-center">
          <p class="font-medium">Items by 'All'</p>
          <i class="fa fa-chevron-down"></i>
       </div>
-      <div class="w-full flex flex-wrap justify-between gap-1 mt-4">
+      <!-- Card wrapper -->
+      <div class="card-wrapper">
          <template v-for="card in 8" :key="card">
-            <div class="show-slide overflow-hidden rounded-xl mb-3 border border-gray-300 shadow-xl" style="max-width: 48%">
+            <div class="card show-slide">
                <img class="w-full" src="/product.jpg" alt="product" />
-               <div class="pt-2 pb-4 px-3 bg-white">
+               <div class="pt-2 pb-6 px-3 bg-white">
                   <strong>Name product</strong>
                   <div class="flex mt-2">
                      <span>
@@ -32,6 +34,12 @@
       </div>
    </section>
 </template>
+
+<style scoped>
+   
+   @import "../style/components/card.css"
+   
+</style>
 
 <script setup>
    

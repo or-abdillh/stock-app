@@ -2,7 +2,7 @@
    <Navbar>
       <template v-slot:title-page>
          <h1 class="nav-title" >Profile</h1>
-      </template>
+   </template>
    </Navbar>
    
    <section id="profile" class="mt-20 s-container">
@@ -12,12 +12,14 @@
                <img class="rounded-full border border-gray-400 mx-auto" src="/avatar.jpg" alt="avatar-default" width="80">
                <p class="text-xl mt-3">Sandhika Galih</p>
             </div>
-            
+            <!-- Info box wrapper -->
             <div class="show-slide flex justify-between mt-2 w-full mx-auto">
+               <!-- Items info -->
                <div class="box-info">
                   <strong>155</strong>
                   <p>Items</p>
                </div>
+               <!-- Categorys info -->
                <div class="box-info">
                   <strong>12</strong>
                   <p>Categorys</p>
@@ -25,12 +27,21 @@
             </div>
             
             <div class="mt-10">
+               <!-- Button change name -->
                <div class="btn-active-label mb-3 duration-300 flex items-center gap-3">
                   <span class="label bg-prussian-blue">
                      <i class="fas fa-user-edit"></i>
                   </span>
                   <p class="text-xl">Change name</p>
                </div>
+               <!-- Button change password -->
+               <div class="btn-active-label mb-3 duration-300 flex items-center gap-3">
+                  <span class="label bg-prussian-blue">
+                     <i class="fas fa-edit"></i>
+                  </span>
+                  <p class="text-xl">Change password</p>
+               </div>
+               <!-- Button Log out -->
                <div @click="btnLogout()" class="btn-active-label duration-300 flex items-center gap-3">
                   <span class="label bg-red-500">
                      <i class="fas fa-sign-out-alt"></i>
@@ -41,6 +52,8 @@
          </div>
       </div>
    </section>
+   <!-- Modal for change name or change password -->
+   <Prompt></Prompt>
 </template>
 
 <style>
@@ -65,13 +78,14 @@
    }
    
    #profile .label {
-      @apply w-3/12 text-gray-100 px-3 py-4 rounded-xl flex items-center justify-center;
+      @apply w-3/12 text-gray-100 px-5 py-4 rounded-xl flex items-center justify-center;
    }
 </style>
 
 <script setup>
    
    import Navbar from '../components/Navbar.vue'
+   import Prompt from '../components/Prompt.vue'
    import { useRouter } from 'vue-router'
    
    const router = useRouter()
