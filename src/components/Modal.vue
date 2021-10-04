@@ -34,19 +34,26 @@
 <script setup>
    
    import { useStore } from 'vuex'
+   import { useRouter } from 'vue-router'
    import { computed, ref } from 'vue'
-   import ButtonNextModal from '../helper/buttonNextModal.js'
+   import logout from '../api/logout.js'
+   import deleteItems from '../api/deleteItems.js'
    
    const store = useStore()
+   const router = useRouter()
    const emits = defineEmits(['closeModal'])
    const isLoad = ref(false)
    const loadSuccess = ref(false)
    
    //This is props
-   defineProps({
+   const props = defineProps({
       isShowModal: {
          default: false,
          type: Boolean
+      }, 
+      actions: {
+         default: 'logout',
+         type: String
       }
    })
    
@@ -58,18 +65,28 @@
       return store.getters.primaryKey
    })
    
+   //Switch action
+   //deleteItems, deleteCategory, logout
    //Handler for next button modal
    const btnNextModal = () => {
-      const cb = () => alert('ok')
-      ButtonNextModal(cb, isLoad, loadSuccess, emits, 'closeModal')
+      
+      isLoad.value = true
+      switch (props.actions) {
+         case 'logout':
+            logout(router, isLoad, loadSuccess, emits, 'closeModal')
+            break
+         case 'deleteItems': 
+            deleteItems(isLoad, loadSuccess, emits, 'closeModal')
+            break
+      }
    }
    
    //Handler for button close modal
-   const btnCloseModal = delay => {
+   const btnCloseModal = () => {
       
       setTimeout(() => {
          emits('closeModal')
-      }, delay)
+      }, 500)
    }
    
 </script>

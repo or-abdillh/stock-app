@@ -55,6 +55,7 @@
    <!-- Modal for change name or change password -->
    <PromptChangeName v-on:close-prompt="btnPromptChangeName()" :show-prompt="showPromptChangeName" ></PromptChangeName>
    <PromptChangePassword v-on:close-prompt="btnPromptChangePassword" :show-prompt="showPromptChangePassword" ></PromptChangePassword>
+   <Modal :is-show-modal="showModalLogout" v-on:closeModal="showModalLogout = !showModalLogout" actions="logout"></Modal>
 </template>
 
 <style>
@@ -68,15 +69,17 @@
    import Navbar from '../components/Navbar.vue'
    import PromptChangeName from '../components/PromptChangeName.vue'
    import PromptChangePassword from '../components/PromptChangePassword.vue'
+   import Modal from '../components/Modal.vue'
    import { useRouter } from 'vue-router'
    import { ref } from 'vue'
    
    const router = useRouter()
    
    //Handler for log out button
+   const showModalLogout = ref(false) 
    const btnLogout = () => {
       setTimeout(() => {
-         router.push({ name: 'login' })
+         showModalLogout.value =!showModalLogout.value
       }, 500)
    }
    
@@ -99,6 +102,5 @@
          showPromptChangePassword.value = !showPromptChangePassword.value
       }, 300)
    }
-   
    
 </script>

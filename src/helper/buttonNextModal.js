@@ -1,20 +1,9 @@
 // Handler function for button next modal
 
-const btnNextModal = (callback, isLoad, loadSuccess, emits, event) => {
+const btnNextModal = (actions) => {
    setTimeout(() => {
       isLoad.value = !isLoad.value
-      //
-      //callback()
-      //
-      setTimeout(() => {
-         loadSuccess.value = true
-         
-         setTimeout(() => {
-            emits(event)
-            loadSuccess.value = false
-            isLoad.value = false
-         }, 500)
-      }, 1500)
+      actions()
    }, 350)
 }
 

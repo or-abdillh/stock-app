@@ -4,7 +4,7 @@
 	<Menu></Menu>
 	<CategoryBar></CategoryBar>
 	<Card v-on:btn-delete-item="showModalDelete = !showModalDelete" ></Card>
-	<Modal v-on:closeModal="showModalDelete = !showModalDelete" :is-show-modal="showModalDelete"></Modal>
+	<Modal v-on:closeModal="showModalDelete = !showModalDelete" :is-show-modal="showModalDelete" actions="deleteItems"></Modal>
 </template>
 
 <style scoped>
