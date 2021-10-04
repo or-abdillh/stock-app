@@ -35,7 +35,7 @@
                   <p class="text-xl">Change name</p>
                </div>
                <!-- Button change password -->
-               <div class="btn-active-label mb-3 duration-300 flex items-center gap-3">
+               <div @click="btnPromptChangePassword()" class="btn-active-label mb-3 duration-300 flex items-center gap-3">
                   <span class="label bg-prussian-blue">
                      <i class="fas fa-edit"></i>
                   </span>
@@ -54,6 +54,7 @@
    </section>
    <!-- Modal for change name or change password -->
    <PromptChangeName v-on:close-prompt="btnPromptChangeName()" :show-prompt="showPromptChangeName" ></PromptChangeName>
+   <PromptChangePassword v-on:close-prompt="btnPromptChangePassword" :show-prompt="showPromptChangePassword" ></PromptChangePassword>
 </template>
 
 <style>
@@ -66,6 +67,7 @@
    
    import Navbar from '../components/Navbar.vue'
    import PromptChangeName from '../components/PromptChangeName.vue'
+   import PromptChangePassword from '../components/PromptChangePassword.vue'
    import { useRouter } from 'vue-router'
    import { ref } from 'vue'
    
@@ -87,5 +89,16 @@
    
    //Handler for show prompt change name
    const showPromptChangeName = ref(false)
+   
+   //Handler for show prompt change password
+   const showPromptChangePassword = ref(false)
+   
+   //Handler for change name button
+   const btnPromptChangePassword = () => {
+      setTimeout(() => {
+         showPromptChangePassword.value = !showPromptChangePassword.value
+      }, 300)
+   }
+   
    
 </script>
