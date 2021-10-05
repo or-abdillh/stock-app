@@ -37,7 +37,7 @@
    import { useRouter } from 'vue-router'
    import { computed, ref } from 'vue'
    import logout from '../api/logout.js'
-   import deleteItems from '../api/deleteItems.js'
+   import deleteItem from '../api/deleteItem.js'
    
    const store = useStore()
    const router = useRouter()
@@ -76,7 +76,7 @@
             logout(router, isLoad, loadSuccess, emits, 'closeModal')
             break
          case 'deleteItems': 
-            deleteItems(isLoad, loadSuccess, emits, 'closeModal')
+            deleteItem(isLoad, loadSuccess, emits, 'closeModal')
             break
       }
    }

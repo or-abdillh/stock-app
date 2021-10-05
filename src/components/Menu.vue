@@ -1,6 +1,6 @@
 <template>
    <section id="menu" class="show-slide s-container mb-6">
-      <div class="btn-active-icon label-wrapper mb-4">
+      <div @click="btnNewItem()" class="btn-active-icon label-wrapper mb-4">
          <span class="bg-celuican label">
             <i class="fa fa-plus"></i>
          </span>
@@ -15,6 +15,19 @@
    </section>
    <hr />
 </template>
+
+<script setup>
+   
+   import { useRouter } from 'vue-router'
+   
+   const router = useRouter()
+   const btnNewItem = () => {
+      setTimeout(() => {
+         router.push({ name: 'new' })
+      }, 500)
+   }
+   
+</script>
 
 <style>
    

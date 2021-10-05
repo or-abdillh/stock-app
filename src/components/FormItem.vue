@@ -1,9 +1,6 @@
 <template>
    <section class="mt-20 s-container">
       <slot name="caption-form"></slot>
-      <pre>
-         {{ isFormValid }}
-      </pre>
       <div class="form-wrapper mt-10">
          <!-- Image of product -->
          <div class="mb-5 flex items-end gap-5">
@@ -42,8 +39,21 @@
                <option class="px-3" value="pack">pack</option>
             </select>
          </div>
+         <!-- Form action -->
          <div class="btn-form mt-8 mb-3 text-xl">
-            <button :disabled="isFormValid.length > 0" class="bg-prussian-blue" type="button">Submit</button>
+            <button @click="btnSubmitForm()" :disabled="isFormValid.length > 0" class="bg-prussian-blue" type="button">
+               <span class="btn-active-label bg-prussian-blue duration-300 text-center rounded text-gray-100 w-5/12  px-2 py-1">
+                  <template v-if="!isLoad && !loadSuccess">
+                     Submit
+                  </template>
+                  <template v-else-if="isLoad && !loadSuccess">
+                     <i class="spinner fas fa-spinner"></i>
+                  </template>
+                  <template v-else>
+                     <i class="fa fa-check"></i>
+                  </template>
+            </span>
+            </button>
          </div>
       </div>
    </section>
@@ -52,6 +62,11 @@
 <script setup>
    
    import { ref, watch, toRef } from 'vue'
+   import updateItem from '../api/updateItem.js'
+   
+   //Variabel for animated
+   const isLoad = ref(false)
+   const loadSuccess = ref(false)
    
    //If this form use for update product
    //Get data from props
@@ -84,6 +99,14 @@
    watch(formUpdateCopy.value, () => {
       isFormValid.value = Object.values(formUpdateCopy.value).filter(val => val === '' || val === null || val === '0')
    })
+   
+   // Form actions 
+   const btnSubmitForm = () => {
+      setTimeout(() => {
+         isLoad.value = true
+         updateItem(isLoad, loadSuccess, formUpdateCopy)
+      }, 500)
+   }
    
 </script>
 
