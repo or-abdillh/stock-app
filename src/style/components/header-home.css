@@ -6,6 +6,5 @@
 }
 
 .header-home-wrapper {
-   @apply flex justify-between bg-opacity-50 pb-5 w-full lg:w-5/12 md:w-7/12 md:mx-auto;
-   backdrop-filter: blur(12px);
+   @apply flex justify-between bg-white shadow-lg pb-5 w-full lg:w-5/12 md:w-7/12 md:mx-auto;
 }

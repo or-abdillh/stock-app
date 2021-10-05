@@ -4,7 +4,16 @@
          <h1 class="nav-title">Update</h1>
       </template>
    </Navbar>
-   <FormItem></FormItem>
+   
+   <FormItem>
+      <template v-slot:caption-form>
+         <h1 class="text-xl w-full text-prussian-blue">
+            You can update information 
+            <br />
+            about your item here 👏
+         </h1>
+      </template>
+   </FormItem>
 </template>
 
 <script setup>
