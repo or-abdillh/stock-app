@@ -23,8 +23,8 @@
                      </span>
                   </div>
                   <div class="mt-4 flex justify-between">
-                     <span class="btn-active-label duration-300 block w-8/12 rounded bg-prussian-blue text-center text-sm py-1 text-gray-100">Update</span>
-                     <span @click="btnDeleteItem('item', '12')" class="btn-active-icon duration-300 block w-3/12 rounded bg-gray-500 text-gray-100 flex justify-center items-center">
+                     <span @click="btnUpdateItem()" class="btn-active-label duration-300 block w-8/12 rounded bg-prussian-blue text-center text-sm py-1 text-gray-100">Update</span>
+                     <span @click="btnDeleteItem('table', 'id')" class="btn-active-icon duration-300 block w-3/12 rounded bg-gray-500 text-gray-100 flex justify-center items-center">
                         <i class="fa fa-trash text-sm"></i>
                      </span>
                   </div>
@@ -45,15 +45,27 @@
    
    import { reactive } from 'vue'
    import { useStore } from 'vuex'
+   import { useRouter } from 'vue-router'
    
    const store = useStore()
+   const router = useRouter()
    const emits = defineEmits(['btnDeleteItem'])
    
+   //Save data about table name and primary key
    const deleteModalObj = reactive({
       tableName: '',
       primaryKey: ''
    })
    
+   //Handler for button update
+   const btnUpdateItem = () => {
+      //Push router to update views
+      setTimeout(() => {
+         router.push({ name: 'update' })
+      }, 500)
+   }
+   
+   //Handler for button delete
    const btnDeleteItem = (table, id) => {
       
       let self = deleteModalObj

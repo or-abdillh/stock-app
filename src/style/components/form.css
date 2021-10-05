@@ -2,11 +2,11 @@
 
 /* input with actions on one section */
 .form-wrapper .form-group {
-   @apply flex w-full;
+   @apply flex justify-between w-full;
 }
 
-.form-wrapper .form-group input[type=text], .form-wrapper .form-group input[type=password] {
-   @apply w-10/12 mb-0 mr-2;
+.form-wrapper .form-group input[type=text], .form-wrapper .form-group input[type=password], .form-wrapper .form-group input[type=number] {
+   @apply w-10/12 mb-0;
 }
 
 .form-wrapper .form-group .btn-item {
@@ -14,13 +14,19 @@
 } 
 
 /* All input type text must fully container */
-.form-wrapper .form-input input[type=text] {
+.form-wrapper .form-input input[type=text],
+.form-wrapper .form-input input[type=number]{
    @apply w-full;
 }
 
 /* All input type text or password style */
 .form-wrapper .form-input input, .form-wrapper .form-group input {
    @apply bg-white rounded-2xl border border-gray-400 px-4 py-5;
+}
+
+/*Style for select dropdown */
+.form-wrapper .select-form {
+   @apply text-gray-400 bg-white h-16 w-full border border-gray-400 rounded-xl;
 }
 
 /* Button main action on form wrapper */
