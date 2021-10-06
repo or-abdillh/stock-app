@@ -6,7 +6,7 @@
          </span>
          <p class="text-xl">New item</p>
       </div>
-      <div class="btn-active-icon label-wrapper">
+      <div @click="btnManageCategory()" class="btn-active-icon label-wrapper">
          <span class="bg-celuican label">
             <i class="fas fa-tasks"></i>
          </span>
@@ -21,9 +21,18 @@
    import { useRouter } from 'vue-router'
    
    const router = useRouter()
+   
+   //Handler for new item menu
    const btnNewItem = () => {
       setTimeout(() => {
          router.push({ name: 'new' })
+      }, 500)
+   }
+   
+   //Handler for manage category menu
+   const btnManageCategory = () => {
+      setTimeout(() => {
+         router.push({ name: 'category' })
       }, 500)
    }
    

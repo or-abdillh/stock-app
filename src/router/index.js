@@ -4,6 +4,7 @@ import Login from '../views/Login.vue'
 import Profile from '../views/Profile.vue'
 import UpdateItems from '../views/UpdateItems.vue'
 import NewItems from '../views/NewItems.vue'
+import Category from '../views/Category.vue'
 
 const routes = [
 	{
@@ -30,6 +31,11 @@ const routes = [
 	   path: '/new',
 	   name: 'new',
 	   component: NewItems
+	},
+	{
+	   path: '/category',
+	   name: 'category',
+	   component: Category
 	}
 ]
 
