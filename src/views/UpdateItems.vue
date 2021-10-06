@@ -7,7 +7,7 @@
    
    <FormItem>
       <template v-slot:caption-form>
-         <h1 class="text-xl w-full text-prussian-blue">
+         <h1 class="show-slide  text-xl w-full text-prussian-blue">
             You can update information 
             <br />
             about your item here 👏

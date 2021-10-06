@@ -16,7 +16,7 @@
             <input v-model="formLogin.username" type="text" placeholder="Username" />
          </div>
          <div class="form-group mb-8 show-slide">
-            <input v-model="formLogin.password" :type="isShowPassword ? 'text' : 'password'" placeholder="Password"/>
+            <input class="mr-3" v-model="formLogin.password" :type="isShowPassword ? 'text' : 'password'" placeholder="Password"/>
             <span @click="isShowPassword = !isShowPassword" class="btn-item btn-active-icon  bg-prussian-blue">
                <i :class="isShowPassword ? 'fa-eye' : 'fa-eye-slash'" class="fa"></i>
             </span>
