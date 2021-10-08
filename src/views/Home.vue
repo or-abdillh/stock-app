@@ -7,10 +7,6 @@
 	<Modal v-on:closeModal="showModalDelete = !showModalDelete" :is-show-modal="showModalDelete" actions="deleteItems"></Modal>
 </template>
 
-<style scoped>
-   
-</style>
-
 <script setup>
    
    import HeaderHome from '../components/HeaderHome.vue'
@@ -20,10 +16,18 @@
    import Card from '../components/Card.vue'
    import Modal from '../components/Modal.vue'
    import { useStore } from 'vuex'
-   import { ref} from 'vue'
+   import { ref, onMounted } from 'vue'
+   import axios from 'axios'
    
    const store = useStore()
    
    const showModalDelete = ref(false)
+   onMounted(() => {
+      const body = {username: 'admin', password: 'admin'}
+      axios.post("http://localhost:8080/auth", body)
+         .then(res => console.log(res.data))
+         .catch(err => console.error(err))
+   })
+   
    
 </script>
