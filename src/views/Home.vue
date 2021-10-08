@@ -17,17 +17,6 @@
    import Modal from '../components/Modal.vue'
    import { useStore } from 'vuex'
    import { ref, onMounted } from 'vue'
-   import axios from 'axios'
-   
-   const store = useStore()
-   
-   const showModalDelete = ref(false)
-   onMounted(() => {
-      const body = {username: 'admin', password: 'admin'}
-      axios.post("http://localhost:8080/auth", body)
-         .then(res => console.log(res.data))
-         .catch(err => console.error(err))
-   })
    
    
 </script>

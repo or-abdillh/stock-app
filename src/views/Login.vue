@@ -22,33 +22,68 @@
             </span>
          </div>
          <div class="btn-form show-slide">
-            <button class="bg-prussian-blue" type="button" :disabled="!isFormLoginValid">
-               LOGIN
-               <i class="fas fa-sign-in-alt"></i>
+            <button @click="btnLogin()" class="bg-prussian-blue flex justify-center items-center" type="button" :disabled="!isFormLoginValid">
+               <p class="mr-2">LOGIN</p>
+               <template v-if="!isLoad && !loadSuccess">
+                  <i class="fas fa-sign-in-alt"></i>
+               </template>
+               <template v-else-if="isLoad && !loadSuccess">
+                  <i class="spinner fas fa-spinner"></i>
+               </template>
+               <template v-else>
+                  <i class="fa fa-check"></i>
+               </template>
             </button>
          </div>
       </div>
    </section>
-   <About></About>
 </template>
 
 <script setup >
    
    import { ref, reactive, computed } from 'vue'
-   import About from '../components/About.vue'
+   import login from '../api/account/login.js'
    
+   //Load animated
+   const isLoad = ref(false)
+   const loadSuccess = ref(false)
+   
+   //Btn show password
    const isShowPassword = ref(false)
    
+   //V Model
    const formLogin = reactive({
       username: '',
       password: ''
    })
    
+   //Validation handler
    const isFormLoginValid = computed(() => {
       let self = formLogin
       if ( self.username === '' || self.password === '' ) return false
       else return true
    })
+   
+   //Login handler
+   const callback = code => {
+      //animated
+      isLoad.value = true
+      //If success response
+      if (code === 200) {
+         setTimeout(() => {
+            loadSuccess.value = true
+         }, 500)
+      } else {
+         alert('login failed !!')
+      }
+   }
+   
+   //Btn login
+   const btnLogin = () => {
+      setTimeout(() => {
+         login(formLogin, callback)
+      }, 500)
+   }
    
 </script>
 
