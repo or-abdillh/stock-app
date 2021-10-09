@@ -5,6 +5,7 @@ import Profile from '../views/Profile.vue'
 import UpdateItems from '../views/UpdateItems.vue'
 import NewItems from '../views/NewItems.vue'
 import Category from '../views/Category.vue'
+import navGuard from './navGuard.js'
 
 const routes = [
 	{
@@ -38,7 +39,10 @@ const routes = [
 	   component: Category
 	}
 ]
-
+//createRouter
 const router = createRouter({ history: createWebHistory(process.env.BASE_URL), routes })
+
+//Navigation Guard
+navGuard(router)
 
 export default router

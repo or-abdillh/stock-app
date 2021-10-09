@@ -44,6 +44,9 @@
    import { ref, reactive, computed } from 'vue'
    import login from '../api/account/login.js'
    import cookie from 'js-cookie'
+   import { useRouter } from 'vue-router'
+   
+   const router = useRouter()
    
    //Load animated
    const isLoad = ref(false)
@@ -75,12 +78,14 @@
          const TOKEN = res.results
          
          setTimeout(() => {
+            console.log('success')
             cookie.set('TOKEN', TOKEN, { expires: 1 })
             loadSuccess.value = true
-            alert(cookie.get("TOKEN"))
+            router.push({ name: 'home' })
          }, 500)
       } else {
          setTimeout(() => {
+            console.log('auth failed')
             isLoad.value = false
          }, 500)
       }
