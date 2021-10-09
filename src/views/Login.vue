@@ -11,6 +11,11 @@
          </p>
       </div>
       
+      <!-- alert -->
+      <div v-if="isFailedLogin" class="px-2 py-3 bg-red-300 mb-4 rounded-xl text-gray-50">
+         <p>Login failed, username or password is wrong !!</p>
+      </div>
+      
       <div class="form-wrapper">
          <div class="form-input mb-5 show-slide">
             <input v-model="formLogin.username" type="text" placeholder="Username" />
@@ -41,12 +46,10 @@
 
 <script setup >
    
-   import { ref, reactive, computed } from 'vue'
+   import { ref, reactive, computed, onMounted, onUpdated } from 'vue'
    import login from '../api/account/login.js'
    import cookie from 'js-cookie'
-   import { useRouter } from 'vue-router'
-   
-   const router = useRouter()
+   import router from '../router'
    
    //Load animated
    const isLoad = ref(false)
@@ -68,6 +71,9 @@
       else return true
    })
    
+   //Show alert if failed
+   const isFailedLogin = ref(false)
+   
    //Login handler
    const callback = res => {
       //animated
@@ -76,16 +82,18 @@
       if ( res.status === 200) {
          //Get TOKEN from response
          const TOKEN = res.results
-         
+         //Save token into local storage
+         localStorage.setItem('TOKEN', TOKEN)
+         //
+         console.log( 'new token :' + TOKEN)
          setTimeout(() => {
-            console.log('success')
-            cookie.set('TOKEN', TOKEN, { expires: 1 })
-            loadSuccess.value = true
-            router.push({ name: 'home' })
-         }, 500)
+            router.push({ path: '/' })
+         }, 1500)
+         //router.push({ path: '/' })
       } else {
          setTimeout(() => {
             console.log('auth failed')
+            isFailedLogin.value = true
             isLoad.value = false
          }, 500)
       }
@@ -97,7 +105,6 @@
          login(formLogin, callback)
       }, 500)
    }
-   
 </script>
 
 <style>

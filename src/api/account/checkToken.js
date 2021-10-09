@@ -11,6 +11,7 @@ const login = (body, callback) => {
       .then(res => {
          // response handler using callback
          const data = res.data
+         console.log(data)
          callback(data)
       })
       .catch(err => {

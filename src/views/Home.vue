@@ -9,27 +9,32 @@
 
 <script setup>
    
+   import { useStore } from 'vuex'
+   import { ref, onMounted } from 'vue'
+   import { useRouter } from 'vue-router'
+   import cookie from 'js-cookie'
+   
+   import checkToken from '../api/account/checkToken.js'
    import HeaderHome from '../components/HeaderHome.vue'
    import SearchBar from '../components/SearchBar.vue'
    import CategoryBar from '../components/CategoryBar.vue'
    import Menu from '../components/Menu.vue'
    import Card from '../components/Card.vue'
    import Modal from '../components/Modal.vue'
-   import { useStore } from 'vuex'
-   import { ref, onMounted } from 'vue'
-   import { useRouter } from 'vue-router'
-   import cookie from 'js-cookie'
-   import checkToken from '../api/account/checkToken.js'
    
+   //Home variabel
    const router = useRouter()
+   const showModalDelete = ref(false)
    
    //If user not authenticated
    const isAuthenticated = res => {
       
       //code response , true if === 200
       if ( res.status !== 200 ) {
+         console.log('push to login')
          router.push({ name: 'login' });
       } else {
+         console.log('push to home')
          router.push({ name: 'home' })
       }
    }
@@ -38,7 +43,7 @@
    onMounted(() => {
       //get TOKEN
       const body = {
-         TOKEN: cookie.get('TOKEN')
+         TOKEN: localStorage.getItem('TOKEN')
       }
       
       //IF token undefined

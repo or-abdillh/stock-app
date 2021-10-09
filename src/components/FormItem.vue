@@ -5,10 +5,7 @@
          <!-- Image of product -->
          <div class="show-slide mb-5 flex items-end gap-5">
             <img class="preview-item" :src="formUpdateCopy.imgProduct" width="100" alt="product" />
-            <div class="">
-               <h1 class="mb-3">Upload image</h1>
-               <input class="bg-white border border-gray-400 py-3 px-4 rounded-xl" type="file"/>
-            </div>
+            <input class="bg-white border border-gray-400 py-3 px-4 rounded-xl" type="file"/>
          </div>
          <!-- Name of product -->
          <div class="show-slide form-input mb-5">
