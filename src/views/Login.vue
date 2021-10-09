@@ -43,6 +43,7 @@
    
    import { ref, reactive, computed } from 'vue'
    import login from '../api/account/login.js'
+   import cookie from 'js-cookie'
    
    //Load animated
    const isLoad = ref(false)
@@ -65,16 +66,23 @@
    })
    
    //Login handler
-   const callback = code => {
+   const callback = res => {
       //animated
       isLoad.value = true
       //If success response
-      if (code === 200) {
+      if ( res.status === 200) {
+         //Get TOKEN from response
+         const TOKEN = res.results
+         
          setTimeout(() => {
+            cookie.set('TOKEN', TOKEN, { expires: 1 })
             loadSuccess.value = true
+            alert(cookie.get("TOKEN"))
          }, 500)
       } else {
-         alert('login failed !!')
+         setTimeout(() => {
+            isLoad.value = false
+         }, 500)
       }
    }
    

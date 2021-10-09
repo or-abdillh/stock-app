@@ -2,6 +2,7 @@
 import BASE_URL from '../BASE_URL.js'
 //AXIOS
 import axios from 'axios'
+import cookie from "js-cookie"
 
 // LOGIN API HANDLER
 const login = (body, callback) => {
@@ -10,7 +11,7 @@ const login = (body, callback) => {
       .then(res => {
          // response handler using callback
          const data = res.data
-         callback(data.status)
+         callback(data)
       })
       .catch(err => {
          console.error(err)
