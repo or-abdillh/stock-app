@@ -1,7 +1,7 @@
 const mutations = {
    
-   setUserName( state, payload ){
-		state.userName = payload
+   setFullname( state, payload ){
+		state.fullname = payload
 	},
 	
 	setDeleteModalValue( state, payload ){

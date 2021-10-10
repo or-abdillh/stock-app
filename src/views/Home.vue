@@ -1,5 +1,5 @@
 <template>
-	<HeaderHome :username="username"></HeaderHome>
+	<HeaderHome :fullname="fullname"></HeaderHome>
 	<SearchBar></SearchBar>
 	<Menu></Menu>
 	<CategoryBar></CategoryBar>
@@ -28,8 +28,8 @@
    const showModalDelete = ref(false)
    
    //Get username
-   const username = computed(() => {
-      return store.getters.username
+   const fullname = computed(() => {
+      return store.getters.fullname
    })
    
    //If user not authenticated
@@ -37,16 +37,16 @@
       
       //code response , true if === 200
       if ( res.status !== 200 ) {
-         console.log('push to login')
          router.push({ name: 'login' });
       } else {
-         console.log('push to home')
          router.push({ name: 'home' })
       }
    }
    
    //Validation 
    onMounted(() => {
+      //Set fullname from server
+      store.dispatch('getProfile')
       //get TOKEN
       const body = {
          TOKEN: localStorage.getItem('TOKEN')

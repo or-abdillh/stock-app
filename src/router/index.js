@@ -47,17 +47,15 @@ const router = createRouter({ history: createWebHistory(process.env.BASE_URL), r
 router.beforeEach((to, from, next) => {
    //Get token from localStorage
    const body = { TOKEN: localStorage.getItem('TOKEN') }
-   
+   console.log(body)   
    //Authentication actions
    axios.post(`${BASE_URL}/token`, body)
       .then(res => {
-         const code = res.data.status
-         console.log(code, body)
-         if ( to.name !== 'login' && code !== 200 ) next({ name: 'login' })
+         if ( to.name !== 'login' && res.data.status !== 200 ) next({ name: 'login' })
          else next()
       })
       .catch(err => {
-         console.log(err)
+         console.log('error', err)
       })
 })
 

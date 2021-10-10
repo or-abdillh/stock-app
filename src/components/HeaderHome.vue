@@ -15,7 +15,7 @@
       </div>
       <div class="show-slide mt-20 text-2xl text-prussian-blue">
          <p>Wellcome to <strong>Stock</strong> ,</p>
-         <p>{{ username }}</p>
+         <p>{{ fullname }}</p>
       </div>
    </section>
 </template>
@@ -32,8 +32,9 @@
    
    //The props
    defineProps({
-      username: {
-         type: String
+      fullname: {
+         type: String,
+         default: 'Username'
       }
    })
    

@@ -10,11 +10,9 @@ const navGuard = router => {
    }
    //If token not exist
    if ( body.TOKEN === undefined ) body.TOKEN = "false" 
-   console.log('nav')
    //Fetch to server for validation the token
    axios.post(`${BASE_URL}/token`, body)
       .then(res => {
-         console.log('guard', 'token get from cookie : ' + body.TOKEN)
          //validation action
          const auth = res.data.status
          router.beforeEach((to, from, next) => {

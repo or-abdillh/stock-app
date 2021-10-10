@@ -38,7 +38,6 @@
 <script setup>
    
    import { ref, reactive, watch } from 'vue'
-   import buttonNextModal from '../helper/buttonNextModal.js'
    
    defineProps({
       showPrompt: {
@@ -66,11 +65,13 @@
    
    //Handler for next prompt
    const btnNextPrompt = () => {
-      const cb = () => alert('ok')
-      buttonNextModal(cb, isLoad, loadSuccess, emits, 'closePrompt')
       setTimeout(() => {
-         //newName.value = ''
-      }, 2000)
+         isLoad.value = true
+         setTimeout(() => {
+            loadSuccess.value = true
+            emits('closePrompt')
+         }, 1000)
+      }, 500)
    }
    
    //Handler for close prompt
