@@ -1,7 +1,7 @@
 const getters = {
    
-   userName(state) {
-      return state.userName
+   username(state) {
+      return state.username
    },
    
    tableName(state) {

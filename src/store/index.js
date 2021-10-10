@@ -5,7 +5,7 @@ import mutations from './mutations.js'
 const store = createStore({
 	state() {
 		return {
-			userName: 'Sandhika Galih',
+			username: 'Sandhika Galih',
 			deleteModalValue: {
 			   tableName: '',
 			   primaryKey: ''

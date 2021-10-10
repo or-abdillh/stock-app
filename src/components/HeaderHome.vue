@@ -15,7 +15,7 @@
       </div>
       <div class="show-slide mt-20 text-2xl text-prussian-blue">
          <p>Wellcome to <strong>Stock</strong> ,</p>
-         <p>Sandhika Galih</p>
+         <p>{{ username }}</p>
       </div>
    </section>
 </template>
@@ -29,6 +29,13 @@
 <script setup>
    
    import { useRouter } from 'vue-router'
+   
+   //The props
+   defineProps({
+      username: {
+         type: String
+      }
+   })
    
    //Event handler for button profile
    const router = useRouter()

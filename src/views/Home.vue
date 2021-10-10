@@ -1,5 +1,5 @@
 <template>
-	<HeaderHome></HeaderHome>
+	<HeaderHome :username="username"></HeaderHome>
 	<SearchBar></SearchBar>
 	<Menu></Menu>
 	<CategoryBar></CategoryBar>
@@ -10,7 +10,7 @@
 <script setup>
    
    import { useStore } from 'vuex'
-   import { ref, onMounted } from 'vue'
+   import { ref, onMounted, computed } from 'vue'
    import { useRouter } from 'vue-router'
    import cookie from 'js-cookie'
    
@@ -23,8 +23,14 @@
    import Modal from '../components/Modal.vue'
    
    //Home variabel
+   const store = useStore()
    const router = useRouter()
    const showModalDelete = ref(false)
+   
+   //Get username
+   const username = computed(() => {
+      return store.getters.username
+   })
    
    //If user not authenticated
    const isAuthenticated = res => {
