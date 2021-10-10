@@ -7,6 +7,7 @@ const store = createStore({
 	state() {
 		return {
 			fullname: '',
+			products: '',
 			deleteModalValue: {
 			   tableName: '',
 			   primaryKey: ''

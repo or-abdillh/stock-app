@@ -1,14 +1,17 @@
 const mutations = {
    
-   setFullname( state, payload ){
+   setFullname( state, payload ) {
 		state.fullname = payload
 	},
-	setDeleteModalValue( state, payload ){
+	setProducts( state, payload ) {
+	   state.products = payload
+	},
+	setDeleteModalValue( state, payload ) {
 	   let self = state.deleteModalValue
 	   self.tableName = payload.tableName
 	   self.primaryKey = payload.primaryKey
 	},
-	resetDeleteModalValue( state ){
+	resetDeleteModalValue( state ) {
 	   let self = state.deleteModalValue
 	   self.tableName = ''
 	   self.primaryKey = ''

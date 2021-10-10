@@ -7,19 +7,19 @@
       </div>
       <!-- Card wrapper -->
       <div class="card-wrapper">
-         <template v-for="card in 8" :key="card">
+         <template v-for="(card, index) in cards" :key="index">
             <div class="card show-slide">
-               <img class="w-full" src="/product.jpg" alt="product" />
+               <img class="w-full" :src="card.image_product" :alt="card.image_product" />
                <div class="pt-2 pb-6 px-3 bg-white">
-                  <strong>Name product</strong>
+                  <strong>{{ card.name_product }}</strong>
                   <div class="flex mt-2">
                      <span>
                         <i class="mr-1 fas fa-dollar-sign"></i>
-                        <small>25000</small>
+                        <small>{{ card.price_product }}</small>
                      </span>
                      <span>
                         <i class="mr-1 fas fa-cubes ml-3"></i>
-                        <small>25pcs</small>
+                        <small>{{ card.stock_product }}{{ card.stock_unit }}</small>
                      </span>
                   </div>
                   <div class="mt-4 flex justify-between">
@@ -47,6 +47,15 @@
    import { useStore } from 'vuex'
    import { useRouter } from 'vue-router'
    
+   //The props
+   defineProps({
+      cards: {
+         type: Array,
+         default: []
+      }
+   })
+   
+   //init
    const store = useStore()
    const router = useRouter()
    const emits = defineEmits(['btnDeleteItem'])

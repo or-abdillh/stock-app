@@ -3,7 +3,7 @@
 	<SearchBar></SearchBar>
 	<Menu></Menu>
 	<CategoryBar></CategoryBar>
-	<Card v-on:btn-delete-item="showModalDelete = !showModalDelete" ></Card>
+	<Card :cards="products" v-on:btn-delete-item="showModalDelete = !showModalDelete" ></Card>
 	<Modal v-on:closeModal="showModalDelete = !showModalDelete" :is-show-modal="showModalDelete" actions="deleteItems"></Modal>
 </template>
 
@@ -32,6 +32,11 @@
       return store.getters.fullname
    })
    
+   //Get all products
+   const products = computed(() => {
+      return store.getters.products
+   })
+   
    //If user not authenticated
    const isAuthenticated = res => {
       
@@ -49,6 +54,9 @@
    onMounted(() => {
       //Set fullname from server
       store.dispatch('getProfile')
+      
+      //Get All products from server
+      store.dispatch('getProducts')
       
       //The body
       const body = {
