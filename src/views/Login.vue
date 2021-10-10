@@ -5,6 +5,10 @@
          <strong class="show-slide">STOCK</strong>
       </div>
       
+      <pre>
+         {{ formLogin }}
+      </pre>
+      
       <div class="wellcome-wrapper show-slide">
          <p class="text-prussian-blue text-2xl">
             Manage your inventory with easy way 👏
@@ -16,18 +20,29 @@
          <p>Login failed, username or password is wrong !!</p>
       </div>
       
-      <div class="form-wrapper">
+      <!-- Form -->
+      <form v-on:submit.prevent="submitForm()" class="form-wrapper">
+         <!-- username -->
          <div class="form-input mb-5 show-slide">
             <input v-model="formLogin.username" type="text" placeholder="Username" />
          </div>
-         <div class="form-group mb-8 show-slide">
+         
+         <!-- password -->
+         <div class="form-group mb-4 show-slide">
             <input class="mr-3" v-model="formLogin.password" :type="isShowPassword ? 'text' : 'password'" placeholder="Password"/>
             <span @click="isShowPassword = !isShowPassword" class="btn-item btn-active-icon  bg-prussian-blue">
                <i :class="isShowPassword ? 'fa-eye' : 'fa-eye-slash'" class="fa"></i>
             </span>
          </div>
+         
+         <!-- remember me -->
+         <div class="flex items-center mb-8 gap-3">
+            <input v-model="formLogin.remember" type="checkbox"/>
+            <p>Remember me ?</p>
+         </div>
+         
          <div class="btn-form show-slide">
-            <button @click="btnLogin()" class="bg-prussian-blue flex justify-center items-center" type="button" :disabled="!isFormLoginValid">
+            <button class="bg-prussian-blue flex justify-center items-center" type="submit" :disabled="!isFormLoginValid">
                <p class="mr-2">LOGIN</p>
                <template v-if="!isLoad && !loadSuccess">
                   <i class="fas fa-sign-in-alt"></i>
@@ -40,7 +55,7 @@
                </template>
             </button>
          </div>
-      </div>
+      </form>
    </section>
 </template>
 
@@ -61,7 +76,8 @@
    //V Model
    const formLogin = reactive({
       username: '',
-      password: ''
+      password: '',
+      remember: false
    })
    
    //Validation handler
@@ -84,23 +100,21 @@
          const TOKEN = res.results
          //Save token into local storage
          localStorage.setItem('TOKEN', TOKEN)
-         //
-         console.log( 'new token :' + TOKEN)
+         
          setTimeout(() => {
             router.push({ path: '/' })
          }, 1500)
          //router.push({ path: '/' })
       } else {
          setTimeout(() => {
-            console.log('auth failed')
             isFailedLogin.value = true
             isLoad.value = false
          }, 500)
       }
    }
    
-   //Btn login
-   const btnLogin = () => {
+   //Submit
+   const submitForm = () => {
       setTimeout(() => {
          login(formLogin, callback)
       }, 500)
