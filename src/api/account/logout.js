@@ -1,10 +1,9 @@
 //Handler for logout action
-import cookie from 'js-cookie'
 
 let logout = (router, isLoad, loadSuccess, emits, event) => {
    
    //Remove TOKEN
-   localStorage.setItem('TOKEN', 'xxx')
+   localStorage.removeItem('TOKEN')
    
    setTimeout(() => {
       loadSuccess.value = true

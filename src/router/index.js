@@ -45,14 +45,22 @@ const router = createRouter({ history: createWebHistory(process.env.BASE_URL), r
 
 //Navigation Guard
 router.beforeEach((to, from, next) => {
-   //Get token from localStorage
-   const body = { TOKEN: localStorage.getItem('TOKEN') }
-   console.log(body)   
+   
+   // create body
+   const body = { TOKEN: null }
+   
+   //Get token
+   //From local storage if exist
+   if ( localStorage.getItem('TOKEN') ) {
+      body.TOKEN = localStorage.getItem('TOKEN')
+   }
+   
    //Authentication actions
    axios.post(`${BASE_URL}/token`, body)
       .then(res => {
          if ( to.name !== 'login' && res.data.status !== 200 ) next({ name: 'login' })
          else next()
+         console.log('Next')
       })
       .catch(err => {
          console.log('error', err)

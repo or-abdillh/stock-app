@@ -5,7 +5,11 @@ const actions = {
    
    getProfile({ commit }) {
       //Get token
-      const TOKEN = localStorage.getItem('TOKEN')
+      let TOKEN = null
+      //From local storage if exist
+      if ( localStorage.getItem('TOKEN') ) {
+         TOKEN = localStorage.getItem('TOKEN')
+      }
       
       const setFullname = res => {
          //Check the response

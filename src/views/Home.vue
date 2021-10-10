@@ -35,8 +35,10 @@
    //If user not authenticated
    const isAuthenticated = res => {
       
+      console.log(res)
       //code response , true if === 200
       if ( res.status !== 200 ) {
+         console.log('not 200')
          router.push({ name: 'login' });
       } else {
          router.push({ name: 'home' })
@@ -47,13 +49,19 @@
    onMounted(() => {
       //Set fullname from server
       store.dispatch('getProfile')
-      //get TOKEN
+      
+      //The body
       const body = {
-         TOKEN: localStorage.getItem('TOKEN')
+         TOKEN: null
       }
       
-      //IF token undefined
-      if ( body.TOKEN === undefined ) body.TOKEN = 'false'
+      console.log('on mounted home')
+      
+      //get TOKEN
+      //From local storage if exist
+      if ( localStorage.getItem('TOKEN') ) {
+         body.TOKEN = localStorage.getItem('TOKEN')
+      }
       
       checkToken(body, isAuthenticated)
    })

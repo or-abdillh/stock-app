@@ -1,13 +1,9 @@
 <template>
    <section class="s-container login">
-      <div class="logo-wrapper">
+      <div class="logo-wrapper mt-16">
          <img class="show-slide" src="/icons/icon-144x144.png" alt="logo-stock-app" width="35" />
          <strong class="show-slide">STOCK</strong>
       </div>
-      
-      <pre>
-         {{ formLogin }}
-      </pre>
       
       <div class="wellcome-wrapper show-slide">
          <p class="text-prussian-blue text-2xl">
@@ -28,17 +24,11 @@
          </div>
          
          <!-- password -->
-         <div class="form-group mb-4 show-slide">
+         <div class="form-group mb-8 show-slide">
             <input class="mr-3" v-model="formLogin.password" :type="isShowPassword ? 'text' : 'password'" placeholder="Password"/>
             <span @click="isShowPassword = !isShowPassword" class="btn-item btn-active-icon  bg-prussian-blue">
                <i :class="isShowPassword ? 'fa-eye' : 'fa-eye-slash'" class="fa"></i>
             </span>
-         </div>
-         
-         <!-- remember me -->
-         <div class="flex items-center mb-8 gap-3">
-            <input v-model="formLogin.remember" type="checkbox"/>
-            <p>Remember me ?</p>
          </div>
          
          <div class="btn-form show-slide">
@@ -61,10 +51,13 @@
 
 <script setup >
    
-   import { ref, reactive, computed, onMounted, onUpdated } from 'vue'
+   import { ref, reactive, computed } from 'vue'
+   import { useStore } from 'vuex'
    import login from '../api/account/login.js'
-   import cookie from 'js-cookie'
    import router from '../router'
+   
+   //Init store
+   const store = useStore()
    
    //Load animated
    const isLoad = ref(false)
@@ -76,8 +69,7 @@
    //V Model
    const formLogin = reactive({
       username: '',
-      password: '',
-      remember: false
+      password: ''
    })
    
    //Validation handler
@@ -98,7 +90,8 @@
       if ( res.status === 200) {
          //Get TOKEN from response
          const TOKEN = res.results
-         //Save token into local storage
+         
+         //Save token into localStorage
          localStorage.setItem('TOKEN', TOKEN)
          
          setTimeout(() => {
