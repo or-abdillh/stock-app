@@ -40,10 +40,8 @@
    //If user not authenticated
    const isAuthenticated = res => {
       
-      console.log(res)
       //code response , true if === 200
       if ( res.status !== 200 ) {
-         console.log('not 200')
          router.push({ name: 'login' });
       } else {
          router.push({ name: 'home' })
@@ -62,8 +60,6 @@
       const body = {
          TOKEN: null
       }
-      
-      console.log('on mounted home')
       
       //get TOKEN
       //From local storage if exist

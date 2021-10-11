@@ -60,7 +60,6 @@ router.beforeEach((to, from, next) => {
       .then(res => {
          if ( to.name !== 'login' && res.data.status !== 200 ) next({ name: 'login' })
          else next()
-         console.log('Next')
       })
       .catch(err => {
          console.log('error', err)
