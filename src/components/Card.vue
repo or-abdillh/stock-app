@@ -8,9 +8,9 @@
       <!-- Card wrapper -->
       <div class="card-wrapper">
          <template v-for="(card, index) in cards" :key="index">
-            <div class="card show-slide">
+            <div class="card flex flex-wrap flex-column flex-stretch show-slide">
                <img class="w-full" :src="card.image_product" :alt="card.image_product" />
-               <div class="pt-2 pb-6 px-3 bg-white">
+               <div class="pt-2 self-end pb-6 px-3 bg-white">
                   <strong>{{ card.name_product }}</strong>
                   <div class="flex mt-2">
                      <span>
@@ -22,7 +22,7 @@
                         <small>{{ card.stock_product }}{{ card.stock_unit }}</small>
                      </span>
                   </div>
-                  <div class="mt-4 flex justify-between">
+                  <div class="mt-4 w-full flex justify-between">
                      <span @click="btnUpdateItem()" class="btn-active-label duration-300 block w-8/12 rounded bg-prussian-blue text-center text-sm py-1 text-gray-100">Update</span>
                      <span @click="btnDeleteItem('table', 'id')" class="btn-active-icon duration-300 block w-3/12 rounded bg-gray-500 text-gray-100 flex justify-center items-center">
                         <i class="fa fa-trash text-sm"></i>

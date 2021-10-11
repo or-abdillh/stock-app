@@ -5,18 +5,18 @@
       </template>
    </Navbar>
    
-   <FormItem>
+   <FormProduct>
       <template v-slot:caption-form>
          <h1 class="show-slide text-xl w-full text-prussian-blue">
             You can add new product here 👏
          </h1>
       </template>
-   </FormItem>
+   </FormProduct>
 </template>
 
 <script setup>
    
    import Navbar from '../components/Navbar.vue'
-   import FormItem from '../components/FormItem.vue'
+   import FormProduct from '../components/FormProduct.vue'
    
 </script>

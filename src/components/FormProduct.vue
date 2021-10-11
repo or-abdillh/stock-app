@@ -103,8 +103,8 @@
       
       isLoad.value = false
       loadSuccess.value = false
-      
       setTimeout(() => {
+         
          //Init FormData
          const formData = new FormData()
          formData.append('file', file.value.files[0])

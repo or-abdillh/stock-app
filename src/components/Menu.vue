@@ -4,7 +4,7 @@
          <span class="bg-celuican label">
             <i class="fa fa-plus"></i>
          </span>
-         <p class="text-xl">New item</p>
+         <p class="text-xl">New product</p>
       </div>
       <div @click="btnManageCategory()" class="btn-active-icon label-wrapper">
          <span class="bg-celuican label">

@@ -4,8 +4,8 @@ import BASE_URL from '../api/BASE_URL.js'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Profile from '../views/Profile.vue'
-import UpdateItems from '../views/UpdateItems.vue'
-import NewItems from '../views/NewItems.vue'
+import UpdateProduct from '../views/UpdateProduct.vue'
+import NewProduct from '../views/NewProduct.vue'
 import Category from '../views/Category.vue'
 
 const routes = [
@@ -27,12 +27,12 @@ const routes = [
 	{
 	   path: '/update',
 	   name: 'update',
-	   component: UpdateItems
+	   component: UpdateProduct
 	},
 	{
 	   path: '/new',
 	   name: 'new',
-	   component: NewItems
+	   component: NewProduct
 	},
 	{
 	   path: '/category',

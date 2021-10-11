@@ -5,6 +5,6 @@
 }
 
 .card {
-   @apply overflow-hidden rounded-xl mb-3 border border-gray-300 shadow-xl;
+   @apply overflow-hidden bg-white rounded-xl mb-3 border border-gray-300 shadow-xl;
    max-width: 48%;
 }
