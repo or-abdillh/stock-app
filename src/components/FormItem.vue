@@ -1,11 +1,13 @@
 <template>
    <section class="mt-20 s-container">
       <slot name="caption-form"></slot>
-      <div class="form-wrapper mt-10">
+      
+      <!-- Form -->
+      <form v-on:submit.prevent="submitForm()" class="form-wrapper mt-10" enctype="multipart/form-data">
          <!-- Image of product -->
          <div class="show-slide mb-5 flex items-end gap-5">
             <img class="preview-item" :src="formUpdateCopy.imgProduct" width="100" alt="product" />
-            <input class="bg-white border border-gray-400 py-3 px-4 rounded-xl" type="file"/>
+            <input ref="file" class="bg-white border border-gray-400 py-3 px-4 rounded-xl" @change="getFile" name="file" type="file"/>
          </div>
          <!-- Name of product -->
          <div class="show-slide form-input mb-5">
@@ -21,7 +23,7 @@
          <!-- Category of product -->
          <div class="show-slide mb-3">
             <select v-model="formUpdateCopy.category" class="select-form">
-               <option selected="" value="0">Chose the category</option>
+               <option selected="true" value="0">Chose the category</option>
                <option class="px-3" value="bags">bags</option>
             </select>
          </div>
@@ -41,7 +43,7 @@
          </div>
          <!-- Form action -->
          <div class="show-slide btn-form mt-8 mb-3 text-xl">
-            <button @click="btnSubmitForm()" :disabled="isFormValid.length > 0" class="bg-prussian-blue" type="button">
+            <button class="bg-prussian-blue" type="submit">
                <span class="btn-active-label bg-prussian-blue duration-300 text-center rounded text-gray-100 w-5/12  px-2 py-1">
                   <template v-if="!isLoad && !loadSuccess">
                      Submit
@@ -55,14 +57,15 @@
             </span>
             </button>
          </div>
-      </div>
+      </form>
    </section>
 </template>
 
 <script setup>
    
-   import { ref, watch, toRef } from 'vue'
+   import { ref, watch, reactive } from 'vue'
    import updateItem from '../api/updateItem.js'
+   import upload from '../api/products/upload.js'
    
    //Variabel for animated
    const isLoad = ref(false)
@@ -100,12 +103,29 @@
       isFormValid.value = Object.values(formUpdateCopy.value).filter(val => val === '' || val === null || val === '0')
    })
    
+   //Get file
+   let file = ref(null)
+   
    // Form actions 
-   const btnSubmitForm = () => {
+   const submitForm = () => {
+      
+      //Init FormData
+      const formData = new FormData()
+      formData.append('file', file.value.files[0])
+      
+      //console.log(formData,  files.value ,files.value.size)
+      for (var key of formData.entries()) {
+        console.log(key[0] + ', ' + key[1]);
+      }
+      
+      upload(formData)
+      /*
       setTimeout(() => {
          isLoad.value = true
          updateItem(isLoad, loadSuccess, formUpdateCopy)
       }, 500)
+      */
+      
    }
    
 </script>
