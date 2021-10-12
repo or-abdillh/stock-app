@@ -11,8 +11,8 @@
       <form v-on:submit.prevent="submitForm()" class="form-wrapper mt-10" enctype="multipart/form-data">
          <!-- Image of product -->
          <div class="show-slide mb-5 flex items-end gap-5">
-            <img class="preview-item" :src="form.image_product" width="100" alt="product" />
-            <input ref="file" class="bg-white border border-gray-400 py-3 px-4 rounded-xl" @change="getFile" name="file" type="file"/>
+            <img class="preview-item" :src="previewImg" width="100" alt="product" />
+            <input ref="file" class="bg-white border border-gray-400 py-3 px-4 rounded-xl" @change="showPreview" name="file" type="file"/>
          </div>
          <!-- Name of product -->
          <div class="show-slide form-input mb-5">
@@ -83,7 +83,7 @@
       name_product: '',
       price_product: null,
       stock_product: null,
-      image_product: '/product.jpg',
+      image_product: '',
       category_product: '0',
       stock_unit: '0',
       TOKEN: localStorage.getItem('TOKEN')
@@ -97,6 +97,22 @@
    
    //Get file
    let file = ref(null)
+   
+   //Image preview
+   let previewImg = ref('/product.jpg')
+   
+   const showPreview = event => {
+      
+      form.value.image_product = 'true'
+      
+      //Init reader
+      const reader = new FileReader()
+      reader.onload = () => {
+         previewImg.value = reader.result  
+      }
+      
+      reader.readAsDataURL(event.target.files[0])
+   }
    
    // Form actions 
    const submitForm = () => {
