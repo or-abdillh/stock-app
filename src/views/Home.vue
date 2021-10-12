@@ -50,6 +50,7 @@
    
    //Validation 
    onMounted(() => {
+      
       //Set fullname from server
       store.dispatch('getProfile')
       

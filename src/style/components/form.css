@@ -21,7 +21,7 @@
 
 /* All input type text or password style */
 .form-wrapper .form-input input, .form-wrapper .form-group input {
-   @apply bg-white rounded-2xl border border-gray-400 px-4 py-5;
+   @apply bg-white rounded-2xl border border-gray-400 px-3 py-4;
 }
 
 /*Style for select dropdown */

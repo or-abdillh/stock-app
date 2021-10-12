@@ -1,15 +1,11 @@
 <template>
    <section id="menu" class="show-slide s-container mb-6">
       <div @click="btnNewItem()" class="btn-active-icon label-wrapper mb-4">
-         <span class="bg-celuican label">
-            <i class="fa fa-plus"></i>
-         </span>
+         <i class="text-prussian-blue fa fa-plus text-2xl"></i>
          <p class="text-xl">New product</p>
       </div>
       <div @click="btnManageCategory()" class="btn-active-icon label-wrapper">
-         <span class="bg-celuican label">
-            <i class="fas fa-tasks"></i>
-         </span>
+         <i class="text-prussian-blue fas fa-tasks text-2xl"></i>
          <p class="text-xl">Manage category</p>
       </div>
    </section>
