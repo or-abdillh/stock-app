@@ -2,9 +2,15 @@
    <section id="card" class="s-container">
       <!-- Section title -->
       <div class="mt-3 text-xl flex justify-between items-center">
-         <p class="font-medium">Items by 'All'</p>
+         <p class="font-medium">Your Products</p>
          <i class="fa fa-chevron-down"></i>
       </div>
+      
+      <!-- State empty card -->
+      <div class="mt-12" v-if="cards.length <= 0">
+         <p>Product not found, try to add new product or change the category 🙏🏻</p>
+      </div>
+      
       <!-- Card wrapper -->
       <div class="card-wrapper">
          <template v-for="(card, index) in cards" :key="index">

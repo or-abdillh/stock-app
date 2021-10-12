@@ -126,7 +126,7 @@
          formData.append('file', file.value.files[0])
          isLoad.value = true
          
-         const callback = res => {
+         const product = res => {
             //
             const successLoad = res => {
                if (res.data.status === 200) {
@@ -149,7 +149,7 @@
             }
          }
          //upload file
-         upload(formData ,callback) 
+         upload(formData ,product) 
       
       }, 500)
    }
