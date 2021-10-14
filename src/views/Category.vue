@@ -5,9 +5,9 @@
       </template>
    </Navbar>
    
-   <section class="mt-24 s-container">
+   <section class="mt-20 s-container">
       <p class="text-xl w-full text-prussian-blue">
-         Categories are used to organize each item you have
+         Categories are used to organize each item you have 👏
       </p>
       
       <!-- List of categorys -->
@@ -19,40 +19,102 @@
          <!-- List -->
          <template v-for="(item, index) in categoryArr" :key="index">
             <div class="flex gap-3 justify-between mb-3">
-               <span class="bg-gray-300 text-prussian-blue text-xl w-10/12 px-4 rounded-xl  py-3">{{ item }}</span>
-               <button class="bg-celuican w-2/12 rounded-xl text-gray-100" type="button">
+               <span class="bg-gray-300 text-prussian-blue text-xl w-10/12 px-4 rounded-xl  py-3">{{ item.category }}</span>
+               <button class="btn-active-icon duration-300 bg-gray-500 text-gray-100 w-2/12 rounded-xl justify-center items-center" type="button">
                   <i class="fa fa-trash"></i>
                </button>
             </div>
          </template>
       </div>
       
-      <!-- Create new category -->
+      <!-- Update category -->
       <div class="mt-10">
+         <div class="mt-3 mb-5 text-xl flex justify-between items-center">
+            <p class="font-semibold">Update</p>
+            <i class="fa fa-chevron-down"></i>
+         </div>
+         <div class="form-wrapper">
+            <select v-model="updateCategory.oldCategory" class="select-form mb-3">
+               <option value="0">Current category active</option>
+               <template v-for="(item, index) in categoryArr" :key="index">
+                  <option :value="item.category">{{ item.category }}</option>
+               </template>
+            </select>
+            <div class="flex gap-3 justify-between">
+               <input v-model="updateCategory.newCategory" class="form-input bg-white px-4 w-8/12 rounded-xl border border-gray-400 py-3" type="text" placeholder="New category" />
+               <button :disabled="emptyFormUpdate.length > 0" class=" btn-form w-4/12 duration-300 bg-prussian-blue rounded-xl py-2 text-gray-100 " type="button">Update</button>
+            </div>
+         </div>
+      </div>
+      
+      <!-- Create new category -->
+      <div class="mt-10 mb-16">
          <div class="mt-3 mb-5 text-xl flex justify-between items-center">
             <p class="font-semibold">Create new</p>
             <i class="fa fa-chevron-down"></i>
          </div>
-         <div class="">
-            <input class="bg-white px-4 w-8/12 rounded-xl border border-gray-400 py-3" type="text" placeholder="New category" />
-            <button class="w-5/12 bg-celuican rounded-xl py-2 mt-3 text-gray-100 " type="button">Submit</button>
+         <div class="form-wrapper flex gap-3 justify-between">
+            <input v-model="createCategory" class="form-input bg-white px-4 w-8/12 rounded-xl border border-gray-400 py-3" type="text" placeholder="New category" />
+            <button :disabled="createCategory === ''" class="btn-active-label btn-form w-4/12 bg-prussian-blue duration-300 rounded-xl py-2 text-gray-100 " type="button">Create</button>
          </div>
       </div>
       
    </section>
 </template>
 
-<style>
+<style scoped>
    
-   @import "../style/components/form.css"
+   .form-wrapper .btn-form:active {
+      letter-spacing: 1.5px;
+   }
+   
+   .form-wrapper .btn-form:disabled {
+      opacity: .5;
+   }
+   
+   .btn-active-label:active {
+      transform: scale(.);
+      letter-spacing: 1px;
+   }
+   
+   .btn-active-icon:active {
+      transform: scale(.85);
+   }
    
 </style>
 
 <script setup>
    
-   import { reactive } from 'vue'
+   import { reactive, onMounted, ref, watch } from 'vue'
    import Navbar from '../components/Navbar.vue'
+   import categorys from '../api/category/categorys.js'
    
-   const categoryArr = reactive(['Shoes', 'Bags', 'Socks'])
+   const categoryArr = ref('')
+   onMounted(() => {
+      
+      const getCategory = (status, res)  => {
+         if ( status ) {
+            categoryArr.value = res.data.results
+         }
+      }
+      
+      //Get category from server
+      categorys(getCategory)
+   })
+   
+   //Update category
+   const emptyFormUpdate = ref(['null'])
+   const updateCategory = ref({
+      oldCategory: '0',
+      newCategory: ''
+   })
+   
+   //Form update validation
+   watch(updateCategory.value, () => {
+      emptyFormUpdate.value = Object.values(updateCategory.value).filter(val => val === '0' || val === '')
+   })
+   
+   //Form create new category
+   const createCategory = ref('')
    
 </script>
