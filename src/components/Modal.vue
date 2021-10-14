@@ -14,6 +14,9 @@
                <template v-else-if="isLoad && !loadSuccess">
                   <i class="spinner fas fa-spinner"></i>
                </template>
+               <template v-else-if="isFailed">
+                  <i class="fa fa-time"></i>
+               </template>
                <template v-else>
                   <i class="fa fa-check"></i>
                </template>
@@ -37,13 +40,14 @@
    import { useRouter } from 'vue-router'
    import { computed, ref } from 'vue'
    import logout from '../api/account/logout.js'
-   import deleteItem from '../api/deleteItem.js'
+   import deleteProduct from '../api/products/delete.js'
    
    const store = useStore()
    const router = useRouter()
-   const emits = defineEmits(['closeModal'])
+   const emits = defineEmits(['closeModal', 'reload-product'])
    const isLoad = ref(false)
    const loadSuccess = ref(false)
+   const isFailed = ref(false)
    
    //This is props
    const props = defineProps({
@@ -52,21 +56,17 @@
          type: Boolean
       }, 
       actions: {
-         default: 'logout',
          type: String
       }
    })
    
-   //Get parameter for delete record
-   const tableName = computed(() => {
-      return store.getters.tableName
-   })
-   const primaryKey = computed(() => {
-      return store.getters.primaryKey
+   //Get body for deleteProduct
+   const bodyDeleteProduct = computed(() => {
+      return store.getters.deleteProduct
    })
    
    //Switch action
-   //deleteItems, deleteCategory, logout
+   //deleteProduct, deleteCategory, logout
    //Handler for next button modal
    const btnNextModal = () => {
       
@@ -75,8 +75,17 @@
          case 'logout':
             logout(router, isLoad, loadSuccess, emits, 'closeModal')
             break
-         case 'deleteItems': 
-            deleteItem(isLoad, loadSuccess, emits, 'closeModal')
+         case 'deleteProduct': 
+            console.log(bodyDeleteProduct.value)
+            const action = status => {
+               setTimeout(() => {
+                  if (status) loadSuccess.value = true
+                  else isFailed.value = true
+                  emits('closeModal')
+                  emits('reload-product')
+               }, 500)
+            }
+            deleteProduct(bodyDeleteProduct.value, action)
             break
       }
    }

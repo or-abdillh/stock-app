@@ -3,8 +3,8 @@
 	<SearchBar></SearchBar>
 	<Menu></Menu>
 	<CategoryBar></CategoryBar>
-	<Card :cards="products" v-on:btn-delete-item="showModalDelete = !showModalDelete" ></Card>
-	<Modal v-on:closeModal="showModalDelete = !showModalDelete" :is-show-modal="showModalDelete" actions="deleteItems"></Modal>
+	<Card :cards="products" v-on:btn-delete-product="showModalDelete = !showModalDelete" ></Card>
+	<Modal v-on:reload-product="reloadProduct()" v-on:closeModal="showModalDelete = !showModalDelete" :is-show-modal="showModalDelete" actions="deleteProduct"></Modal>
 </template>
 
 <script setup>
@@ -31,6 +31,12 @@
    const fullname = computed(() => {
       return store.getters.fullname
    })
+   
+   //Reload / get product if event reload-product firing
+   const reloadProduct = () => {
+      //Get All products from server
+      store.dispatch('getProducts')
+   }
    
    //Get all products
    const products = computed(() => {

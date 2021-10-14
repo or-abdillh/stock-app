@@ -68,10 +68,49 @@
 
 <script setup>
    
-   import { ref, watch, reactive } from 'vue'
+   import { ref, watch, reactive, computed, onMounted } from 'vue'
+   import { useRoute } from 'vue-router'
+   import { useStore } from 'vuex'
    import updateItem from '../api/updateItem.js'
    import upload from '../api/products/upload.js'
    import createProduct from '../api/products/create.js'
+   import update from '../api/products/update.js'
+   import removeFile from '../api/products/removeFile.js'
+   
+   //Init router
+   const route = useRoute()
+   
+   //Init store
+   const store = useStore()
+   
+   //get current route name
+   const currentRoute = computed(() => {
+      return route.name
+   })
+   
+   //Get state updateProduct
+   const body = computed(() => {
+      return store.getters.updateProduct
+   })
+   
+   //indicator 
+   const isForUpdate = ref(false)
+   
+   onMounted(() => {
+      
+      //If currentRoute === 'update' , binding form with state
+      if (currentRoute.value === 'update') { 
+         isForUpdate.value = true
+         previewImg.value = body.value.image_product
+         form.value.name_product = body.value.name_product
+         form.value.price_product = body.value.price_product
+         form.value.stock_product = body.value.stock_product
+         form.value.image_product = body.value.image_product
+         form.value.category_product = body.value.category_product
+         form.value.stock_unit = body.value.stock_unit
+      }
+      console.log(isForUpdate.value, currentRoute.value, form.valu)
+   })
    
    //Variabel for animated
    const isLoad = ref(false)
@@ -86,7 +125,7 @@
       image_product: '',
       category_product: '0',
       stock_unit: '0',
-      TOKEN: localStorage.getItem('TOKEN')
+      TOKEN: localStorage.getItem('TOKEN'),
    })
    
    //Form validation
@@ -126,20 +165,20 @@
          formData.append('file', file.value.files[0])
          isLoad.value = true
          
-         const product = res => {
-            //
-            const successLoad = res => {
-               if (res.data.status === 200) {
-                  setTimeout(() => {
-                     loadSuccess.value = true
-                     
-                  }, 500)
-               } else {
-                  setTimeout(() => {
-                     isFailed.value = true
-                  }, 300)
-               }
+         const successLoad = res => {
+            if (res.data.status === 200) {
+               setTimeout(() => {
+                  loadSuccess.value = true   
+               }, 500)
+            } else {
+               setTimeout(() => {
+                  isFailed.value = true
+               }, 300)
             }
+         }
+         
+         //Create
+         const product = res => {
             
             //If upload success
             if ( res.data.status === 200 ) {
@@ -148,8 +187,34 @@
                createProduct(form.value, successLoad)
             }
          }
+         
+         //Update
+         const updateProduct = res => {
+            //
+            if (res.data.status === 200) {
+               form.value.image_product = res.data.results.path
+               form.value.id_product = body.value.id_product
+               update(form.value, successLoad)
+               
+               //Remove old file
+               removeFile({
+                  TOKEN: localStorage.getItem('TOKEN'),
+                  image_product: body.value.image_product
+               })
+            }
+         }
+         
          //upload file
-         upload(formData ,product) 
+         if ( !isForUpdate.value ) upload(formData ,product)
+         else {
+            if ( form.value.image_product === 'true' ) {
+               //If user upload new file
+               upload(formData, updateProduct)
+            } else {
+               form.value.id_product = body.value.id_product
+               update(form.value, successLoad)
+            }
+         }
       
       }, 500)
    }

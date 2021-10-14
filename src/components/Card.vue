@@ -29,8 +29,16 @@
                      </span>
                   </div>
                   <div class="mt-4 w-full flex justify-between">
-                     <span @click="btnUpdateItem()" class="btn-active-label duration-300 block w-8/12 rounded bg-prussian-blue text-center text-sm py-1 text-gray-100">Update</span>
-                     <span @click="btnDeleteItem('table', 'id')" class="btn-active-icon duration-300 block w-3/12 rounded bg-gray-500 text-gray-100 flex justify-center items-center">
+                     <span @click="btnUpdateProduct(
+                        card.id_product,
+                        card.name_product,
+                        card.image_product,
+                        card.price_product,
+                        card.stock_product,
+                        card.stock_unit,
+                        card.category_product
+                     )" class="btn-active-label duration-300 block w-8/12 rounded bg-prussian-blue text-center text-sm py-1 text-gray-100">Update</span>
+                     <span @click="btnDeleteProduct(card.id_product, card.image_product)" class="btn-active-icon duration-300 block w-3/12 rounded bg-gray-500 text-gray-100 flex justify-center items-center">
                         <i class="fa fa-trash text-sm"></i>
                      </span>
                   </div>
@@ -64,7 +72,7 @@
    //init
    const store = useStore()
    const router = useRouter()
-   const emits = defineEmits(['btnDeleteItem'])
+   const emits = defineEmits(['btnDeleteProduct'])
    
    //Save data about table name and primary key
    const deleteModalObj = reactive({
@@ -73,7 +81,17 @@
    })
    
    //Handler for button update
-   const btnUpdateItem = () => {
+   const btnUpdateProduct = (id, name, image, price, stock, unit, category) => {
+      //Save into state
+      store.commit('setUpdateProduct', {
+         id_product: id,
+         name_product: name,
+         image_product: image,
+         price_product: price,
+         stock_product: stock,
+         stock_unit: unit,
+         category_product: category
+      })
       //Push router to update views
       setTimeout(() => {
          router.push({ name: 'update' })
@@ -81,15 +99,13 @@
    }
    
    //Handler for button delete
-   const btnDeleteItem = (table, id) => {
+   const btnDeleteProduct = (key, file) => {
       
-      let self = deleteModalObj
-      self.tableName = table
-      self.primaryKey = id
-      store.commit('setDeleteModalValue', self)
+      //Passing data product into modal with save data into state
+      store.commit('setDeleteProduct', { id_product: key, image_product: file })
       
       setTimeout(() => {
-         emits('btnDeleteItem')
+         emits('btnDeleteProduct')
       }, 500)
    }
    

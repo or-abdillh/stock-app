@@ -7,7 +7,6 @@ const createProduct = (body, success) => {
    //Create fetch
    axios.post(`${BASE_URL}/createProduct`, body)
       .then(res => {
-         //
          success(res)
       })
       .catch(err => {

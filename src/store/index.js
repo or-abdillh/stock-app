@@ -8,10 +8,21 @@ const store = createStore({
 		return {
 			fullname: '',
 			products: '',
-			deleteModalValue: {
-			   tableName: '',
-			   primaryKey: ''
-			}
+			deleteProduct: {
+			   TOKEN: localStorage.getItem('TOKEN'),
+			   id_product: '',
+			   image_product: ''
+			},
+			updateProduct: {
+			  id_product: '',
+			  name_product: '',
+			  price_product: '',
+			  stock_product: '',
+			  image_product: '',
+			  category_product: '',
+			  stock_unit: ''
+			},
+			currentCategory: 'all'
 		}
 	},
 	getters,

@@ -6,6 +6,15 @@ const getters = {
    products(state) {
      return state.products 
    },
+   deleteProduct(state) {
+     return state.deleteProduct
+   },
+   updateProduct(state) {
+     return state.updateProduct 
+   },
+   TOKEN(state) {
+     return state.deleteProduct.TOKEN
+   },
    tableName(state) {
       return state.deleteModalValue.tableName
    },

@@ -1,6 +1,6 @@
 <template>
    <section id="menu" class="show-slide s-container mb-6">
-      <div @click="btnNewItem()" class="btn-active-icon label-wrapper mb-4">
+      <div @click="btnNewProduc()" class="btn-active-icon label-wrapper mb-4">
          <i class="text-prussian-blue fa fa-plus text-2xl"></i>
          <p class="text-xl">New product</p>
       </div>
@@ -19,7 +19,7 @@
    const router = useRouter()
    
    //Handler for new item menu
-   const btnNewItem = () => {
+   const btnNewProduc = () => {
       setTimeout(() => {
          router.push({ name: 'new' })
       }, 500)
