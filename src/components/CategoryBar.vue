@@ -20,21 +20,22 @@
    import { reactive, ref, onMounted } from 'vue'
    import axios from 'axios'
    import categorys from '../api/category/categorys.js'
-   import BASE_URL from '../api/BASE_URL.js'
    
    //Get categorys from server
    const categoryArr = ref('')
    onMounted(() => {
+      
+      const getCategory = (status, res)  => {
+         if ( status) {
+            categoryArr.value = res.data.results
+            categoryArr.value.unshift({ category: 'All' })
+            categoryArr.value.push({ category: 'Uncategorys' })
+         }
+      }
+      
       //Get category from server
-      axios.post(`${BASE_URL}/categorys`, { TOKEN: localStorage.getItem('TOKEN') })
-         .then(res => {
-            if (res.data.status === 200) {
-               categoryArr.value = res.data.results
-               categoryArr.value.unshift({ category: 'All' })
-               categoryArr.value.push({ category: 'Uncategorys' })
-            }
-         })
-         .catch(err => console.log(err))
+      categorys(getCategory)
+      
    })
    
    const currentCategory = ref('All')
