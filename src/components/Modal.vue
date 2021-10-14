@@ -76,13 +76,20 @@
             logout(router, isLoad, loadSuccess, emits, 'closeModal')
             break
          case 'deleteProduct': 
-            console.log(bodyDeleteProduct.value)
+            
             const action = status => {
                setTimeout(() => {
-                  if (status) loadSuccess.value = true
+                  if (status) {
+                     loadSuccess.value = true,
+                  }
                   else isFailed.value = true
                   emits('closeModal')
                   emits('reload-product')
+                  setTimeout(() => {
+                     loadSuccess.value = false
+                     isLoad.value = false
+                     isFailed.value = false
+                  }, 300)
                }, 500)
             }
             deleteProduct(bodyDeleteProduct.value, action)
