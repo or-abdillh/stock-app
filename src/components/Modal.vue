@@ -38,7 +38,7 @@
    
    import { useStore } from 'vuex'
    import { useRouter } from 'vue-router'
-   import { computed, ref } from 'vue'
+   import { computed, ref, watch } from 'vue'
    import logout from '../api/account/logout.js'
    import deleteProduct from '../api/products/delete.js'
    
@@ -80,16 +80,16 @@
             const action = status => {
                setTimeout(() => {
                   if (status) {
-                     loadSuccess.value = true,
+                     loadSuccess.value = true
                   }
                   else isFailed.value = true
-                  emits('closeModal')
                   emits('reload-product')
                   setTimeout(() => {
-                     loadSuccess.value = false
+                     emits('closeModal')
                      isLoad.value = false
+                     loadSuccess.value = false
                      isFailed.value = false
-                  }, 300)
+                  }, 500)
                }, 500)
             }
             deleteProduct(bodyDeleteProduct.value, action)
