@@ -18,7 +18,6 @@
 <script setup>
    
    import { reactive, ref, onMounted } from 'vue'
-   import axios from 'axios'
    import categorys from '../api/category/categorys.js'
    
    //Get categorys from server
@@ -26,7 +25,7 @@
    onMounted(() => {
       
       const getCategory = (status, res)  => {
-         if ( status) {
+         if ( status ) {
             categoryArr.value = res.data.results
             categoryArr.value.unshift({ category: 'All' })
             categoryArr.value.push({ category: 'Uncategorys' })
@@ -35,7 +34,6 @@
       
       //Get category from server
       categorys(getCategory)
-      
    })
    
    const currentCategory = ref('All')

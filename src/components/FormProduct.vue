@@ -29,7 +29,9 @@
          <div class="show-slide mb-3">
             <select v-model="form.category_product" class="select-form">
                <option selected="true" value="0">Chose the category</option>
-               <option class="px-3" value="bags">bags</option>
+               <template v-for="(item, index) in categoryArr" :key="index">
+                  <option class="px-3" :value="item.category">{{ item.category }}</option>
+               </template>
             </select>
          </div>
          <!-- Stock of product -->
@@ -75,6 +77,7 @@
    import createProduct from '../api/products/create.js'
    import update from '../api/products/update.js'
    import removeFile from '../api/products/removeFile.js'
+   import categorys from '../api/category/categorys.js'
    
    //Init router
    const route = useRoute()
@@ -95,6 +98,9 @@
    //indicator 
    const isForUpdate = ref(false)
    
+   //List of category
+   const categoryArr = ref('')
+   
    onMounted(() => {
       
       //If currentRoute === 'update' , binding form with state
@@ -108,7 +114,17 @@
          form.value.category_product = body.value.category_product
          form.value.stock_unit = body.value.stock_unit
       }
-      console.log(isForUpdate.value, currentRoute.value, form.valu)
+      
+      //Get categorys from server and render to options
+      const getCategory = (status, res)  => {
+         if ( status ) {
+            categoryArr.value = res.data.results
+            categoryArr.value.push({ category: 'Uncategorys' })
+         }
+      }
+      
+      //Get category from server
+      categorys(getCategory)
    })
    
    //Variabel for animated
