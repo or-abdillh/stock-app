@@ -71,7 +71,6 @@
    import { ref, watch, reactive, computed, onMounted } from 'vue'
    import { useRoute } from 'vue-router'
    import { useStore } from 'vuex'
-   import updateItem from '../api/updateItem.js'
    import upload from '../api/products/upload.js'
    import createProduct from '../api/products/create.js'
    import update from '../api/products/update.js'

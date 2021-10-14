@@ -64,7 +64,6 @@
    //The props
    defineProps({
       cards: {
-         type: Array,
          default: []
       }
    })

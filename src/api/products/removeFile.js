@@ -5,7 +5,7 @@ import BASE_URL from '../BASE_URL'
 const removeFile = body => {
    //
    //console.log('remove file', body, callback)
-   axios.post(`${BASE_URL}/removeImage`, body)
+   axios.post(`${BASE_URL}/removeFile`, body)
       .then(res => {
          console.log(res)
       })
