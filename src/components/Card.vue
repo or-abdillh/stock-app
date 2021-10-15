@@ -21,7 +21,7 @@
                   <div class="flex mt-2">
                      <span>
                         <i class="mr-1 fas fa-dollar-sign"></i>
-                        <small>{{ card.price_product }}</small>
+                        <small>{{ card.price_product.toLocaleString() }}</small>
                      </span>
                      <span>
                         <i class="mr-1 fas fa-cubes ml-3"></i>
