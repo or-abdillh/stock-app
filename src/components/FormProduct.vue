@@ -119,7 +119,7 @@
       const getCategory = (status, res)  => {
          if ( status ) {
             categoryArr.value = res.data.results
-            categoryArr.value.push({ category: 'Uncategorys' })
+            categoryArr.value.push({ category: 'uncategorys' })
          }
       }
       
