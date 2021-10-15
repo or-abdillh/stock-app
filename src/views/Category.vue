@@ -20,11 +20,12 @@
          <template v-for="(item, index) in categoryArr" :key="index">
             <div class="flex gap-3 justify-between mb-3">
                <span class="bg-gray-300 text-prussian-blue text-xl w-10/12 px-4 rounded-xl  py-3">{{ item.category }}</span>
-               <button class="btn-active-icon duration-300 bg-gray-500 text-gray-100 w-2/12 rounded-xl justify-center items-center" type="button">
+               <button @click="btnDeleteCategory(item.id_category)" class="btn-active-icon duration-300 bg-gray-500 text-gray-100 w-2/12 rounded-xl justify-center items-center" type="button">
                   <i class="fa fa-trash"></i>
                </button>
             </div>
          </template>
+         <p>**If you delete a category, then your products in that category will go into uncategorys</p>
       </div>
       
       <!-- Update category -->
@@ -41,7 +42,7 @@
                </template>
             </select>
             <div class="flex gap-3 justify-between">
-               <input v-model="updateCategory.newCategory" class="form-input bg-white px-4 w-8/12 rounded-xl border border-gray-400 py-3" type="text" placeholder="New category" />
+               <input v-model="updateCategory.newCategory" class="form-input bg-white px-4 w-8/12 rounded-xl border border-gray-400 py-3" type="text" placeholder="Rename to " />
                <button :disabled="emptyFormUpdate.length > 0" class=" btn-form w-4/12 duration-300 bg-prussian-blue rounded-xl py-2 text-gray-100 " type="button">Update</button>
             </div>
          </div>
@@ -88,16 +89,16 @@
    import { reactive, onMounted, ref, watch } from 'vue'
    import Navbar from '../components/Navbar.vue'
    import categorys from '../api/category/categorys.js'
+   import deleteCategory from '../api/category/delete.js'
    
    const categoryArr = ref('')
-   onMounted(() => {
-      
-      const getCategory = (status, res)  => {
-         if ( status ) {
-            categoryArr.value = res.data.results
-         }
+   const getCategory = (status, res)  => {
+      if ( status ) {
+         categoryArr.value = res.data.results
       }
-      
+   }
+   
+   onMounted(() => {
       //Get category from server
       categorys(getCategory)
    })
@@ -116,5 +117,12 @@
    
    //Form create new category
    const createCategory = ref('')
+   
+   //Button delete
+   const btnDeleteCategory = key => {
+      setTimeout(() => {
+         deleteCategory(key, categorys, getCategory)
+      }, 500)
+   }
    
 </script>
