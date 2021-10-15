@@ -35,15 +35,15 @@
             <i class="fa fa-chevron-down"></i>
          </div>
          <div class="form-wrapper">
-            <select v-model="updateCategory.oldCategory" class="select-form mb-3">
+            <select v-model="formUpdate.oldCategory" class="select-form mb-3">
                <option value="0">Current category active</option>
                <template v-for="(item, index) in categoryArr" :key="index">
-                  <option :value="item.category">{{ item.category }}</option>
+                  <option :value="item.id_category">{{ item.category }}</option>
                </template>
             </select>
             <div class="flex gap-3 justify-between">
-               <input v-model="updateCategory.newCategory" class="form-input bg-white px-4 w-8/12 rounded-xl border border-gray-400 py-3" type="text" placeholder="Rename to " />
-               <button :disabled="emptyFormUpdate.length > 0" class=" btn-form w-4/12 duration-300 bg-prussian-blue rounded-xl py-2 text-gray-100 " type="button">Update</button>
+               <input v-model="formUpdate.newCategory" class="form-input bg-white px-4 w-8/12 rounded-xl border border-gray-400 py-3" type="text" placeholder="Rename to " />
+               <button @click="btnUpdateCategory" :disabled="emptyFormUpdate.length > 0" class=" btn-form w-4/12 duration-300 bg-prussian-blue rounded-xl py-2 text-gray-100 " type="button">Update</button>
             </div>
          </div>
       </div>
@@ -91,6 +91,7 @@
    import categorys from '../api/category/categorys.js'
    import deleteCategory from '../api/category/delete.js'
    import createCategory from '../api/category/create.js'
+   import updateCategory from '../api/category/update.js'
    
    const categoryArr = ref('')
    const getCategory = (status, res)  => {
@@ -106,14 +107,21 @@
    
    //Update category
    const emptyFormUpdate = ref(['null'])
-   const updateCategory = ref({
+   const formUpdate = ref({
       oldCategory: '0',
       newCategory: ''
    })
    
+   const btnUpdateCategory = () => {
+      setTimeout(() => {
+         updateCategory(formUpdate.value.oldCategory, formUpdate.value.newCategory, categorys, getCategory)
+         formUpdate.value.newCategory = ''
+      }, 500)
+   }
+   
    //Form update validation
-   watch(updateCategory.value, () => {
-      emptyFormUpdate.value = Object.values(updateCategory.value).filter(val => val === '0' || val === '')
+   watch(formUpdate.value, () => {
+      emptyFormUpdate.value = Object.values(formUpdate.value).filter(val => val === '0' || val === '')
    })
    
    //Form create new category
