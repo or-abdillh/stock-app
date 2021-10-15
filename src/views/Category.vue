@@ -25,7 +25,7 @@
                </button>
             </div>
          </template>
-         <p>**If you delete a category, then your products in that category will go into uncategorys</p>
+         <p>*If you delete a category, then your products in that category will go into uncategorys</p>
       </div>
       
       <!-- Update category -->
@@ -55,8 +55,8 @@
             <i class="fa fa-chevron-down"></i>
          </div>
          <div class="form-wrapper flex gap-3 justify-between">
-            <input v-model="createCategory" class="form-input bg-white px-4 w-8/12 rounded-xl border border-gray-400 py-3" type="text" placeholder="New category" />
-            <button :disabled="createCategory === ''" class="btn-active-label btn-form w-4/12 bg-prussian-blue duration-300 rounded-xl py-2 text-gray-100 " type="button">Create</button>
+            <input v-model="newCategory" class="form-input bg-white px-4 w-8/12 rounded-xl border border-gray-400 py-3" type="text" placeholder="New category" />
+            <button @click="btnCreateCategory()" :disabled="newCategory === ''" class="btn-active-label btn-form w-4/12 bg-prussian-blue duration-300 rounded-xl py-2 text-gray-100 " type="button">Create</button>
          </div>
       </div>
       
@@ -90,6 +90,7 @@
    import Navbar from '../components/Navbar.vue'
    import categorys from '../api/category/categorys.js'
    import deleteCategory from '../api/category/delete.js'
+   import createCategory from '../api/category/create.js'
    
    const categoryArr = ref('')
    const getCategory = (status, res)  => {
@@ -116,7 +117,13 @@
    })
    
    //Form create new category
-   const createCategory = ref('')
+   const newCategory = ref('')
+   const btnCreateCategory = () => {
+      setTimeout(() => {
+         createCategory(newCategory.value, categorys, getCategory)
+         newCategory.value = ''
+      }, 500)
+   }
    
    //Button delete
    const btnDeleteCategory = (category, key) => {
