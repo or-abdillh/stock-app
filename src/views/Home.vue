@@ -1,8 +1,8 @@
 <template>
 	<HeaderHome :fullname="fullname"></HeaderHome>
-	<SearchBar></SearchBar>
+	<SearchBar v-on:change-keyword="search()"></SearchBar>
 	<Menu></Menu>
-	<CategoryBar v-on:change-category="changeCategory()"></CategoryBar>
+	<CategoryBar v-on:change-category="search()"></CategoryBar>
 	<Card :cards="products" v-on:btn-delete-product="showModalDelete = !showModalDelete" ></Card>
 	<Modal v-on:reload-product="reloadProduct()" v-on:closeModal="showModalDelete = !showModalDelete" :is-show-modal="showModalDelete" actions="deleteProduct"></Modal>
 </template>
@@ -44,7 +44,7 @@
    })
    
    //changeCategory
-   const changeCategory = () => {
+   const search = () => {
       console.log(store.getters.bodySearch)
    }
    

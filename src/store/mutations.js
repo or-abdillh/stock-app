@@ -23,6 +23,9 @@ const mutations = {
 	},
 	setCurrentCategory (state, payload) {
 	   state.currentCategory = payload
+	},
+	setKeyword (state, payload) {
+	   state.keyword = payload
 	}
 }
 
