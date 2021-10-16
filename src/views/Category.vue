@@ -5,7 +5,7 @@
       </template>
    </Navbar>
    
-   <section class="mt-20 s-container">
+   <section class="show-slide mt-20 s-container">
       <p class="text-xl w-full text-prussian-blue">
          Categories are used to organize each item you have 👏
       </p>
@@ -18,18 +18,18 @@
          </div>
          <!-- List -->
          <template v-for="(item, index) in categoryArr" :key="index">
-            <div class="flex gap-3 justify-between mb-3">
+            <div class="show-slide flex gap-3 justify-between mb-3">
                <span class="bg-gray-300 text-prussian-blue text-xl w-10/12 px-4 rounded-xl  py-3">{{ item.category }}</span>
                <button @click="btnDeleteCategory(item.category, item.id_category)" class="btn-active-icon duration-300 bg-gray-500 text-gray-100 w-2/12 rounded-xl justify-center items-center" type="button">
                   <i class="fa fa-trash"></i>
                </button>
             </div>
          </template>
-         <p>*If you delete a category, then your products in that category will go into uncategorys</p>
+         <p class="show-slide">*If you delete a category, then your products in that category will go into uncategorys</p>
       </div>
       
       <!-- Update category -->
-      <div class="mt-10">
+      <div class="mt-10 show-slide">
          <div class="mt-3 mb-5 text-xl flex justify-between items-center">
             <p class="font-semibold">Update</p>
             <i class="fa fa-chevron-down"></i>
@@ -49,7 +49,7 @@
       </div>
       
       <!-- Create new category -->
-      <div class="mt-10 mb-16">
+      <div class="mt-10 mb-16 show-slide">
          <div class="mt-3 mb-5 text-xl flex justify-between items-center">
             <p class="font-semibold">Create new</p>
             <i class="fa fa-chevron-down"></i>

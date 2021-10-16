@@ -34,7 +34,7 @@
    //Reload / get product if event reload-product firing
    const reloadProduct = () => {
       //Get All products from server
-      store.dispatch('getProducts')
+      store.dispatch('getProductsBy', bodySearch.value)
    }
    
    //Get all products
@@ -65,11 +65,22 @@
    //Validation 
    onMounted(() => {
       
+      //If current category not All
+      const currentCategoryFromState = computed(() => {
+         return store.getters.currentCategory
+      })
+      
+      if (currentCategoryFromState.value !== 'All') {
+         //Get products by search again
+         store.dispatch('getProductsBy', bodySearch.value)
+      } else {
+         //Get All products from server
+         store.dispatch('getProducts')
+      }
+      
       //Set fullname from server
       store.dispatch('getProfile')
       
-      //Get All products from server
-      store.dispatch('getProducts')
       
       //The body
       const body = {

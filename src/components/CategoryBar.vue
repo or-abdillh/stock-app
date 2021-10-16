@@ -17,7 +17,7 @@
 
 <script setup>
    
-   import { reactive, ref, onMounted } from 'vue'
+   import { reactive, ref, onMounted, computed } from 'vue'
    import { useStore } from 'vuex'
    import categorys from '../api/category/categorys.js'
    
@@ -41,9 +41,17 @@
       
       //Get category from server
       categorys(getCategory)
+      
+      //Get the currenr category
+      const categoryFromState = computed(() => {
+         return store.getters.currentCategory
+      })
+      
+      currentCategory.value = categoryFromState.value
    })
    
-   const currentCategory = ref('All')
+   const currentCategory = ref('')
+   
    const changeCategory = name => {
       //Set to state
       store.commit('setCurrentCategory', name)

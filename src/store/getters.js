@@ -27,6 +27,9 @@ const getters = {
          category_product: state.currentCategory,
          TOKEN: localStorage.getItem('TOKEN')
       }
+   },
+   currentCategory(state) {
+      return state.currentCategory
    }
 }
 

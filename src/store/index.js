@@ -22,7 +22,7 @@ const store = createStore({
 			  category_product: '',
 			  stock_unit: ''
 			},
-			currentCategory: 'all',
+			currentCategory: 'All',
 			keyword: ''
 		}
 	},
