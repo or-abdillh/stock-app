@@ -21,10 +21,8 @@ const mutations = {
 	  body.image_product = payload.image_product
 	  body.stock_unit = payload.stock_unit
 	},
-	resetDeleteModalValue (state) {
-	   let self = state.deleteModalValue
-	   self.tableName = ''
-	   self.primaryKey = ''
+	setCurrentCategory (state, payload) {
+	   state.currentCategory = payload
 	}
 }
 

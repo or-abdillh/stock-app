@@ -18,7 +18,14 @@
 <script setup>
    
    import { reactive, ref, onMounted } from 'vue'
+   import { useStore } from 'vuex'
    import categorys from '../api/category/categorys.js'
+   
+   //init store
+   const store = useStore()
+   
+   //Define emits
+   const emits = defineEmits(['changeCategory'])
    
    //Get categorys from server
    const categoryArr = ref('')
@@ -37,7 +44,12 @@
    })
    
    const currentCategory = ref('All')
-   const changeCategory = name => currentCategory.value = name
+   const changeCategory = name => {
+      //Set to state
+      store.commit('setCurrentCategory', name)
+      currentCategory.value = name
+      emits('changeCategory')
+   }
    
 </script>
 

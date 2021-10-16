@@ -2,7 +2,7 @@
 	<HeaderHome :fullname="fullname"></HeaderHome>
 	<SearchBar></SearchBar>
 	<Menu></Menu>
-	<CategoryBar></CategoryBar>
+	<CategoryBar v-on:change-category="changeCategory()"></CategoryBar>
 	<Card :cards="products" v-on:btn-delete-product="showModalDelete = !showModalDelete" ></Card>
 	<Modal v-on:reload-product="reloadProduct()" v-on:closeModal="showModalDelete = !showModalDelete" :is-show-modal="showModalDelete" actions="deleteProduct"></Modal>
 </template>
@@ -42,6 +42,11 @@
    const products = computed(() => {
       return store.getters.products
    })
+   
+   //changeCategory
+   const changeCategory = () => {
+      console.log(store.getters.bodySearch)
+   }
    
    //If user not authenticated
    const isAuthenticated = res => {

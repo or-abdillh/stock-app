@@ -20,6 +20,13 @@ const getters = {
    },
    primaryKey(state) {
       return state.deleteModalValue.primaryKey
+   },
+   bodySearch(state) {
+      return {
+         keyword: state.keyword,
+         category_product: state.currentCategory,
+         TOKEN: localStorage.getItem('TOKEN')
+      }
    }
 }
 
