@@ -12,7 +12,6 @@
    import { useStore } from 'vuex'
    import { ref, onMounted, computed } from 'vue'
    import { useRouter } from 'vue-router'
-   import cookie from 'js-cookie'
    
    import checkToken from '../api/account/checkToken.js'
    import HeaderHome from '../components/HeaderHome.vue'
@@ -43,10 +42,14 @@
       return store.getters.products
    })
    
-   //changeCategory
+   //changeCategory or change-keyword
    const search = () => {
-      console.log(store.getters.bodySearch)
+      store.dispatch('getProductsBy', bodySearch.value)
    }
+   
+   const bodySearch = computed(() => {
+      return store.getters.bodySearch
+   })
    
    //If user not authenticated
    const isAuthenticated = res => {

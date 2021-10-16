@@ -1,7 +1,7 @@
 //Actions
 import profile from '../api/account/profile.js'
 import products from '../api/products/products.js'
-import { computed } from 'vue'
+import searchProducts from '../api/products/search.js'
 
 const actions = {
    
@@ -31,6 +31,15 @@ const actions = {
       }
       
       products(TOKEN, setProducts)
+   },
+   
+   getProductsBy({ commit }, payload) {
+      
+      const getAndSet = (res, data) => {
+         if (res) commit('setProducts', data.results)
+      }
+      
+      searchProducts(payload, getAndSet)
    }
 }
 
