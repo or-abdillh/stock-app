@@ -89,7 +89,7 @@
       //If success response
       if ( res.status === 200) {
          //Get TOKEN from response
-         const TOKEN = res.results
+         const TOKEN = res.results.TOKEN
          
          //Save token into localStorage
          localStorage.setItem('TOKEN', TOKEN)

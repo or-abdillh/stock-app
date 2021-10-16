@@ -6,6 +6,13 @@ const getters = {
    products(state) {
      return state.products 
    },
+   profile(state) {
+     return {
+        fullname: state.fullname,
+        products: state.amountsOf.product,
+        categorys: state.amountsOf.category
+     } 
+   },
    deleteProduct(state) {
      return state.deleteProduct
    },

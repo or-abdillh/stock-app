@@ -81,7 +81,6 @@
       //Set fullname from server
       store.dispatch('getProfile')
       
-      
       //The body
       const body = {
          TOKEN: null

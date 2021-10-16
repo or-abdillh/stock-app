@@ -10,18 +10,18 @@
          <div class="card-profile-wrapper">
             <div class="card-profile">
                <img class="rounded-full border border-gray-400 mx-auto" src="/avatar.jpg" alt="avatar-default" width="80">
-               <p class="text-xl mt-3">Sandhika Galih</p>
+               <p class="text-xl mt-3">{{ profile.fullname }}</p>
             </div>
             <!-- Info box wrapper -->
             <div class="show-slide flex justify-between mt-2 w-full mx-auto">
                <!-- Items info -->
                <div class="box-info">
-                  <strong>155</strong>
-                  <p>Items</p>
+                  <strong>{{ profile.products }}</strong>
+                  <p>Products</p>
                </div>
                <!-- Categorys info -->
                <div class="box-info">
-                  <strong>12</strong>
+                  <strong>{{ profile.categorys }}</strong>
                   <p>Categorys</p>
                </div>
             </div>
@@ -71,9 +71,22 @@
    import PromptChangePassword from '../components/PromptChangePassword.vue'
    import Modal from '../components/Modal.vue'
    import { useRouter } from 'vue-router'
-   import { ref } from 'vue'
+   import { useStore } from 'vuex'
+   import { ref, computed, onMounted } from 'vue'
    
+   //Init
    const router = useRouter()
+   const store = useStore()
+   
+   //Get profile state 
+   const profile = computed(() => {
+      return store.getters.profile
+   })
+   
+   //onMounted
+   onMounted(() => {
+      store.dispatch('getProfile')
+   })
    
    //Handler for log out button
    const showModalLogout = ref(false) 

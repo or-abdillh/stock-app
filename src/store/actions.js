@@ -12,7 +12,11 @@ const actions = {
       const setFullname = res => {
          //Check the response
          if ( res.data.status === 200 ) {
-            commit('setFullname', res.data.results[0].fullname)
+            commit('setFullname', res.data.results.fullname)
+            commit('setAmountsOf', {
+               product: res.data.results.products,
+               category: res.data.results.categorys
+            })
          }
       }
       

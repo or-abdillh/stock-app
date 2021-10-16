@@ -6,6 +6,10 @@ const mutations = {
 	setProducts (state, payload) {
 	   state.products = payload
 	},
+	setAmountsOf (state, payload) {
+	  state.amountsOf.product = payload.product 
+	  state.amountsOf.category = payload.category 
+	},
 	setDeleteProduct (state, payload) {
 	   state.deleteProduct.id_product = payload.id_product
 	   state.deleteProduct.image_product = payload.image_product

@@ -8,6 +8,10 @@ const store = createStore({
 		return {
 			fullname: '',
 			products: '',
+			amountsOf: {
+			  product: 0,
+			  category: 0
+			},
 			deleteProduct: {
 			   TOKEN: localStorage.getItem('TOKEN'),
 			   id_product: '',
