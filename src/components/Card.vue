@@ -15,7 +15,7 @@
       <div class="card-wrapper">
          <template v-for="(card, index) in cards" :key="index">
             <div class="card flex flex-wrap flex-column flex-stretch show-slide">
-               <img class="w-full" :src="card.image_product" :alt="card.image_product" />
+               <img load="lazy" class="w-full" :src="card.image_product" :alt="card.image_product" />
                <div class="pt-2 self-end pb-6 px-3 bg-white">
                   <strong>{{ card.name_product }}</strong>
                   <div class="flex mt-2">
