@@ -1,19 +1,17 @@
-
 /* Modal Style class */
+.modal-layer {
+   @apply fixed duration-300 bg-gray-800 bg-opacity-50 inset-0;
+   z-index: 999;
+}
 
-   .modal-layer {
-      @apply fixed duration-300 bg-gray-800 bg-opacity-50 inset-0;
-      z-index: 999;
-   }
+.modal-wrapper {
+   @apply bg-gray-100 w-9/12 md:w-5/12 mx-auto mt-24 rounded-xl shadow-lg p-8;
+}
 
-   .modal-wrapper {
-      @apply bg-gray-100 w-9/12 md:w-5/12 mx-auto mt-24 rounded-xl shadow px-6 py-6;
-   }
-   
-   .modal-title {
-      @apply text-xl mb-2;
-   }
-   
-   [data-role=change]:disabled {
-      opacity: .55!important;
-   }
+.modal-title {
+   @apply text-xl mb-2;
+}
+
+[data-role=change]:disabled {
+   opacity: .55!important;
+}

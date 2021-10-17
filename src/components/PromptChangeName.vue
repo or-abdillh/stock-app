@@ -62,6 +62,7 @@
    const btnChangeName = () => {
       
       setTimeout(() => {
+         loadSuccess.value = false
          isLoad.value = true
       }, 500)
       
@@ -73,12 +74,13 @@
             setTimeout(() => {
                loadSuccess.value = true
                emits('closePrompt')
+               newName.value = ''
             }, 1000)
          } else {
             setTimeout(() => {
                isLoad.value = false
                emits('closePrompt')
-            })
+            }, 500)
          }
       }
       

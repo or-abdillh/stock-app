@@ -5,13 +5,12 @@
             Change your password
          </h1>
          <div>
-            <input v-model="form.oldPassword" class="p-3 mt-2 rounded-xl border border-gray-400 mb-2 w-full" type="password" placeholder="Old password" />
             <input v-model="form.newPassword" class="p-3 mt-2 rounded-xl border border-gray-400 mb-2 w-full" type="password" placeholder="New password" />
-            <input v-model="form.confirmNew" class="p-3 mt-2 rounded-xl border border-gray-400 w-full" type="password" placeholder="Confirm New password" />
+            <input v-model="form.confirm" class="p-3 mt-2 rounded-xl border border-gray-400 w-full" type="password" placeholder="Confirm New password" />
          </div>
          <div class="flex mt-5 gap-3">
             <!-- Modal actions -->
-            <button :disabled="isValid.length > 0 > 0" data-role="change" @click="btnNextPrompt()" class="btn-active-label bg-prussian-blue duration-300 text-center rounded text-gray-100 w-5/12  px-2 py-1">
+            <button :disabled="!isValid" data-role="change" @click="btnNextPrompt()" class="btn-active-label bg-prussian-blue duration-300 text-center rounded text-gray-100 w-5/12  px-2 py-1">
                <template v-if="!isLoad && !loadSuccess">
                   Next
                </template>
@@ -39,6 +38,7 @@
    
    import { ref, reactive, watch } from 'vue'
    
+   //Define props
    defineProps({
       showPrompt: {
          type: Boolean,
@@ -46,21 +46,25 @@
       }
    })
    
+   //Aniamted variabel
    const isLoad = ref(false)
    const loadSuccess = ref(false)
+   
+   //Define emits
    const emits = defineEmits('closePrompt')
-   const isValid = ref([false])
+   
+   //Validation form
+   const isValid = ref(false)
    
    //V model
    const form = reactive({
-      oldPassword: '',
       newPassword: '',
-      confirmNew: ''
+      confirm: ''
    })
    
    watch(form, () => {
-      //Validation system
-      isValid.value = Object.values(form).filter(val => val === '')
+      if (form.newPassword === '' || form.confirm === '' || form.newPassword !== form.confirm) isValid.value = false
+      else isValid.value = true
    })
    
    //Handler for next prompt
