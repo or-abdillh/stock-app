@@ -11,11 +11,6 @@
          </p>
       </div>
       
-      <!-- alert -->
-      <div v-if="isFailedLogin" class="px-2 py-3 bg-red-300 mb-4 rounded-xl text-gray-50">
-         <p>Login failed, username or password is wrong !!</p>
-      </div>
-      
       <!-- Form -->
       <form v-on:submit.prevent="submitForm()" class="form-wrapper">
          <!-- username -->
@@ -46,6 +41,11 @@
             </button>
          </div>
       </form>
+      <!-- alert -->
+      <div v-if="isFailedLogin" class="px-3 py-2 bg-gray-200 mt-4 rounded-xl text-gray-800">
+         <p>Login failed, username or password is wrong !!</p>
+      </div>
+      
    </section>
 </template>
 

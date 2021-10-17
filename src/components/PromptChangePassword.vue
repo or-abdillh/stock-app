@@ -10,7 +10,7 @@
          </div>
          <div class="flex mt-5 gap-3">
             <!-- Modal actions -->
-            <button :disabled="!isValid" data-role="change" @click="btnNextPrompt()" class="btn-active-label bg-prussian-blue duration-300 text-center rounded text-gray-100 w-5/12  px-2 py-1">
+            <button :disabled="!isValid" data-role="change" @click="btnChangePassword()" class="btn-active-label bg-prussian-blue duration-300 text-center rounded text-gray-100 w-5/12  px-2 py-1">
                <template v-if="!isLoad && !loadSuccess">
                   Next
                </template>
@@ -37,6 +37,7 @@
 <script setup>
    
    import { ref, reactive, watch } from 'vue'
+   import changePassword from '../api/account/changePassword.js'
    
    //Define props
    defineProps({
@@ -68,20 +69,34 @@
    })
    
    //Handler for next prompt
-   const btnNextPrompt = () => {
+   const btnChangePassword = () => {
       setTimeout(() => {
+         loadSuccess.value = false
          isLoad.value = true
-         setTimeout(() => {
-            loadSuccess.value = true
-            emits('closePrompt')
-         }, 1000)
       }, 500)
+      
+      const success = res => {
+         if (res) {
+            setTimeout(() => {
+               loadSuccess.value = true
+               emits('closePrompt')
+               form.newPassword = ''
+               form.confirm = ''
+            }, 1000)
+         } else {
+            setTimeout(() => {
+               isLoad.value = false
+               emits('closePrompt')
+            }, 500)
+         }
+      }
+      
+      changePassword(form.newPassword, success)
    }
    
    //Handler for close prompt
    const btnClosePrompt = () => {
       setTimeout(() => {
-         
          emits('closePrompt')
       }, 500)
    }
