@@ -2,12 +2,12 @@
    <section :class="showPrompt ? 'block' : 'hidden'" class="modal-layer">
       <div class="show-from-bottom modal-wrapper">
          <h1 class="modal-title">
-            Your name
+            Input Your name
          </h1>
-         <input v-model="newName" class="p-3 mt-2 rounded-xl border border-gray-400" type="text" placeholder="Type here" />
+         <input v-model="newName" class="p-3 mt-2 w-full rounded-xl border border-gray-400" type="text" placeholder="Type here" />
          <div class="flex mt-5 gap-3">
             <!-- Modal actions -->
-            <button data-role="change" :disabled="newName === ''" @click="btnNextPrompt()" class="btn-active-label bg-prussian-blue duration-300 text-center rounded text-gray-100 w-5/12  px-2 py-1">
+            <button data-role="change" :disabled="newName === ''" @click="btnChangeName()" class="btn-active-label bg-prussian-blue duration-300 text-center rounded text-gray-100 w-5/12  px-2 py-1">
                <template v-if="!isLoad && !loadSuccess">
                   Next
                </template>
@@ -34,7 +34,13 @@
 <script setup>
    
    import { ref } from 'vue'
+   import changeName from '../api/account/changeName.js'
+   import { useStore } from 'vuex'
    
+   //Init store
+   const store = useStore()
+   
+   //This is props   
    defineProps({
       showPrompt: {
          type: Boolean,
@@ -42,22 +48,41 @@
       }
    })
    
+   //Animated variabel
    const isLoad = ref(false)
    const loadSuccess = ref(false)
+   
+   //This is emits
    const emits = defineEmits('closePrompt')
    
    //V model
    const newName = ref('')
    
    //Handler for next prompt
-   const btnNextPrompt = () => {
+   const btnChangeName = () => {
+      
       setTimeout(() => {
          isLoad.value = true
-         setTimeout(() => {
-            loadSuccess.value = true
-            emits('closePrompt')
-         }, 1000)
       }, 500)
+      
+      const success = res => {
+         if (res) {
+            //Get profile from server after succes 
+            store.dispatch('getProfile')
+            
+            setTimeout(() => {
+               loadSuccess.value = true
+               emits('closePrompt')
+            }, 1000)
+         } else {
+            setTimeout(() => {
+               isLoad.value = false
+               emits('closePrompt')
+            })
+         }
+      }
+      
+      changeName(newName.value, success)
    }
    
    //Handler for close prompt
