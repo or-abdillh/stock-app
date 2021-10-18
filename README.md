@@ -2,7 +2,7 @@
 <p align="center">Manage Your Inventory With Easy Way</p>
 
 <img src="./src/assets/banner-stock-app.png" width="100%" alt="">
-[More screenshoots](https://www.instagram.com/p/CVIPq2JlX2B/?utm_medium=copy_link)
+[More screenshoots ](https://www.instagram.com/p/CVIPq2JlX2B/?utm_medium=copy_link)
 
 ### About
 Stock App, is a website-based inventory management application built with Vue JS, Node JS, and MySql.
