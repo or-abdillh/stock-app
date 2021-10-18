@@ -21,12 +21,12 @@
 
 /* All input type text or password style */
 .form-wrapper .form-input input, .form-wrapper .form-group input {
-   @apply bg-white rounded-2xl border border-gray-400 px-3 py-4;
+   @apply bg-gray-200 rounded-2xl border border-gray-400 px-3 py-4;
 }
 
 /*Style for select dropdown */
 .form-wrapper .select-form {
-   @apply text-gray-800 bg-white px-3 py-4 w-full border border-gray-400 rounded-2xl;
+   @apply text-gray-800 bg-gray-200 px-3 py-4 w-full border border-gray-400 rounded-2xl;
 }
 
 /* Button main action on form wrapper */

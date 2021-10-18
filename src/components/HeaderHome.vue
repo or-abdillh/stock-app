@@ -5,7 +5,7 @@
          <!-- Dynamic Header -->
          <div class="header-home-wrapper s-container">
             <div class="flex items-center">
-               <img class="rounded-xl" src="/icons/icon-144x144.png" alt="logo-stock" width="40"/>
+               <img class="rounded-xl bg-prussian-blue" src="/icons/icon-144x144.png" alt="logo-stock" width="40"/>
                <strong class="logo-text text-prussian-blue ml-2 text-xl font-bold">STOCK</strong>
             </div>
             <div @click="btnUserProfile()" class="btn-active-icon duration-300 bg-prussian-blue text-gray-100 flex justify-center items-center p-3 rounded-xl">

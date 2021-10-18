@@ -42,7 +42,7 @@
                </template>
             </select>
             <div class="flex gap-3 justify-between">
-               <input v-model="formUpdate.newCategory" class="form-input bg-white px-4 w-8/12 rounded-xl border border-gray-400 py-3" type="text" placeholder="Rename to " />
+               <input v-model="formUpdate.newCategory" class="form-input bg-gray-200 px-4 w-8/12 rounded-xl border border-gray-400 py-3" type="text" placeholder="Rename to " />
                <button @click="btnUpdateCategory" :disabled="emptyFormUpdate.length > 0" class=" btn-form w-4/12 duration-300 bg-prussian-blue rounded-xl py-2 text-gray-100 " type="button">Update</button>
             </div>
          </div>
@@ -55,7 +55,7 @@
             <i class="fa fa-chevron-down"></i>
          </div>
          <div class="form-wrapper flex gap-3 justify-between">
-            <input v-model="newCategory" class="form-input bg-white px-4 w-8/12 rounded-xl border border-gray-400 py-3" type="text" placeholder="New category" />
+            <input v-model="newCategory" class="form-input bg-gray-200 px-4 w-8/12 rounded-xl border border-gray-400 py-3" type="text" placeholder="New category" />
             <button @click="btnCreateCategory()" :disabled="newCategory === ''" class="btn-active-label btn-form w-4/12 bg-prussian-blue duration-300 rounded-xl py-2 text-gray-100 " type="button">Create</button>
          </div>
       </div>

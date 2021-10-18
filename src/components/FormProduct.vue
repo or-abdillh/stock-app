@@ -12,7 +12,7 @@
          <!-- Image of product -->
          <div class="show-slide mb-5 flex items-end gap-5">
             <img class="preview-item" :src="previewImg" width="100" alt="product" />
-            <input ref="file" class="bg-white border border-gray-400 py-3 px-4 rounded-xl" @change="showPreview" name="file" type="file"/>
+            <input ref="file" class="bg-gray-200 border border-gray-400 py-3 px-4 rounded-xl" @change="showPreview" name="file" type="file"/>
          </div>
          <!-- Name of product -->
          <div class="show-slide form-input mb-5">
