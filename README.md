@@ -1,7 +1,46 @@
-# Vue 3 + Vite
+<h3 align="center">Stock APP</h3>
+<p align="center">Manage Your Inventory With Easy Way</p>
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+<img src="/banner-stock-app.png" width="100%" alt="">
+[👉 More screenshoots](https://www.instagram.com/p/CVIPq2JlX2B/?utm_medium=copy_link)
 
-## Recommended IDE Setup
+### About
+Stock App, is a website-based inventory management application built with Vue JS, Node JS, and MySql.
+ 
+This application can assist users in managing their inventory in an easy and organized way with a categorization system and product search.
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+### Languages and Tools
+- Vue JS 3
+- Tailwind
+- Font Awesome 5
+- Google Fonts
+- Node JS
+- Express JS
+- MySql
+- Vite Js
+- Termux
+- Acode code editor
+- Git
+
+### Features
+- Create new product
+- Update product
+- Remove product
+- Create category
+- Rename category
+- Create new category
+- Remove category
+- Product search by keyword
+- Product search by category
+- Change name 
+- Change password
+
+### Want To Sell
+
+
+### Demo 
+Coming Soon 🙏🏻
+
+[Oka R Abdillah ](http://github.com/or-abdillh)
+<br>
+Last edited on : 01/9/2021
