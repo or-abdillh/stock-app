@@ -5,7 +5,11 @@ import BASE_URL from '../BASE_URL'
 const removeFile = body => {
    //
    //console.log('remove file', body, callback)
-   axios.post(`${BASE_URL}/removeFile`, body)
+   
+   const data = { data: { image_product: body.image_product } }
+   const headers = { headers: { token: body.TOKEN } } 
+   
+   axios.delete(`${BASE_URL}/removeFile`, data, headers)
       .then(res => {
          console.log(res)
       })
