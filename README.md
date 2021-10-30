@@ -48,6 +48,13 @@ This application can assist users in managing their inventory in an easy and org
 ### Demo 
 - [Demo Stock App - Inventory Management](http://www.instagram.com/reel/CVMyBH1FOdB/?utm_medium=copy_link)
 
+### How To Start
+- Clone this repository with this command <code>git clone https://github.com/or-abdillh/stock-app.git</code>
+- Then, use this command <code>cd stock-app</code>
+- Install all dependencies <code>npm install</code>
+- Finally run the server <code>npm run dev</code>
+- The local server running at http://localhost:3000/
+
 ### Thanks 
 - Support me with a cup of coffee and other snacks [here ..](https://saweria.co/orabdillh)
 - Don't forget to give me star in this repository 🙏🏻🙏🏻
