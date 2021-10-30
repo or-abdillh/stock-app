@@ -4,7 +4,10 @@ import axios from 'axios'
 
 const searchProducts = (body, callback) => {
    
-   axios.post(`${BASE_URL}/search`, body)
+   //Create headers
+   const headers = { headers: { token: body.TOKEN } }
+      
+   axios.post(`${BASE_URL}/search`, body, headers)
       .then(res => {
          //Success
          console.log('res', res)

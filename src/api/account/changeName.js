@@ -4,12 +4,11 @@ import axios from 'axios'
 
 const changeName = (newName, callback) => {
    // create body
-   const body = {
-      TOKEN: localStorage.getItem('TOKEN'),
-      new_name: newName
-   }
+   const body = { new_name: newName }
+   //Create headers
+   const headers = { headers: { token: localStorage.getItem('TOKEN') } }
    //Fetch
-   axios.post(`${BASE_URL}/changeName`, body)
+   axios.post(`${BASE_URL}/changeName`, body, headers)
       .then(res => {
          //Success
          if (res.data.status === 200) callback(true)
