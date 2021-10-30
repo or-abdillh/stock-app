@@ -5,12 +5,15 @@ import BASE_URL from '../BASE_URL'
 const updateCategory = (key, category, callback, getCategory) => {
    //Create body
    const body = {
-      TOKEN: localStorage.getItem('TOKEN'),
       id_category: key,
       category: category
    }
+   
+   //Create headers
+   const headers = { headers: { token: localStorage.getItem('TOKEN') } }
+   
    //Fetch
-   axios.post(`${BASE_URL}/updateCategory`, body)
+   axios.post(`${BASE_URL}/updateCategory`, body, headers)
       .then(res => {
          //Success
          if (res.data.status === 200) callback(getCategory)
