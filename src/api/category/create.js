@@ -4,12 +4,13 @@ import axios from 'axios'
 
 const createCategory = (category, callback, getCategorys) => {
    //Create body
-   const body = {
-      TOKEN: localStorage.getItem('TOKEN'),
-      category: category
-   }
+   const body = { category }
+   
+   //Create headers
+   const headers = { headers: { token: localStorage.getItem('TOKEN') } }
+   
    //Fetch
-   axios.post(`${BASE_URL}/createCategory`, body)
+   axios.post(`${BASE_URL}/createCategory`, body, headers)
       .then(res => {
          //Success
          if ( res.data.status === 200 ) callback(getCategorys)
