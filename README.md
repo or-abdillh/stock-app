@@ -4,7 +4,7 @@
 📌 Client Application / Front End
 
 <img src="./src/assets/banner-stock-app.png" width="100%" alt="" />
-[More screenshoots](https://www.instagram.com/p/CVIPq2JlX2B/?utm_medium=copy_link)
+[More screenshoots](http://www.instagram.com/p/CVIPq2JlX2B/?utm_medium=copy_link)
 
 ### About
 Stock App, is a website-based inventory management application built with Vue JS, Node JS, and MySql.
@@ -13,11 +13,13 @@ This application can assist users in managing their inventory in an easy and org
 
 ### Responsive Test
 <img src="./src/assets/banner-stock-app-2.png" width="100%" />
--Test Via [A'm I Responsive](http://ami.responsivedesign.is/)
+- Test Via [A'm I Responsive](http://ami.responsivedesign.is)
 
 ### Languages and Tools
 - Vue JS 3
-- Tailwind
+- Tailwindcss
+- VUEX
+- Vue Router
 - Font Awesome 5
 - Google Fonts
 - Vite Js
@@ -44,7 +46,7 @@ This application can assist users in managing their inventory in an easy and org
 - Minimalist design UI
 
 ### Demo 
--[Demo Stock App - Inventory Management](http://www.instagram.com/reel/CVMyBH1FOdB/?utm_medium=copy_link)
+- [Demo Stock App - Inventory Management](http://www.instagram.com/reel/CVMyBH1FOdB/?utm_medium=copy_link)
 
 ### Thanks 
 - Support me with a cup of coffee and other snacks [here ..](https://saweria.co/orabdillh)
