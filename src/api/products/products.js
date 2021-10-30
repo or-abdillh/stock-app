@@ -3,10 +3,11 @@ import BASE_URL from '../BASE_URL.js'
 import axios from 'axios'
 
 const products = (token, callback) => {
-   //POST 
-   const body = { TOKEN: token }
-   
-   axios.post(`${BASE_URL}/products`, body)
+   // Send Token in headers
+   axios.get(`${BASE_URL}/products`, {
+      headers: {
+         token
+      }})
       .then(res => {
          callback(res)
       })
