@@ -35,14 +35,14 @@
             <i class="fa fa-chevron-down"></i>
          </div>
          <div class="form-wrapper">
-            <select v-model="formUpdate.oldCategory" class="select-form mb-3">
+            <select v-model="formUpdate.Old" class="select-form mb-3">
                <option value="0">Current category active</option>
                <template v-for="(item, index) in categoryArr" :key="index">
-                  <option :value="item.id_category">{{ item.category }}</option>
+                  <option :value="`${item.id_category}-${item.category}`" @click="alert('yuyu')">{{ item.category }}</option>
                </template>
             </select>
             <div class="flex gap-3 justify-between">
-               <input v-model="formUpdate.newCategory" class="form-input bg-gray-200 px-4 w-8/12 rounded-xl border border-gray-400 py-3" type="text" placeholder="Rename to " />
+               <input v-model="formUpdate.New" class="form-input bg-gray-200 px-4 w-8/12 rounded-xl border border-gray-400 py-3" type="text" placeholder="Rename to " />
                <button @click="btnUpdateCategory" :disabled="emptyFormUpdate.length > 0" class=" btn-form w-4/12 duration-300 bg-prussian-blue rounded-xl py-2 text-gray-100 " type="button">Update</button>
             </div>
          </div>
@@ -108,14 +108,15 @@
    //Update category
    const emptyFormUpdate = ref(['null'])
    const formUpdate = ref({
-      oldCategory: '0',
-      newCategory: ''
+      Old: '',
+      New: ''
    })
    
+   //Update handler
    const btnUpdateCategory = () => {
       setTimeout(() => {
-         updateCategory(formUpdate.value.oldCategory, formUpdate.value.newCategory, categorys, getCategory)
-         formUpdate.value.newCategory = ''
+         updateCategory(formUpdate.value.Old, formUpdate.value.New, categorys, getCategory)
+         formUpdate.value.New = ''
       }, 500)
    }
    

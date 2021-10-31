@@ -2,10 +2,11 @@
 import axios from 'axios'
 import BASE_URL from '../BASE_URL' 
 
-const updateCategory = (key, category, callback, getCategory) => {
+const updateCategory = (data, category, callback, getCategory) => {
    //Create body
    const body = {
-      id_category: key,
+      id_category: data.split('-')[0],
+      oldCategory: data.split('-')[1],
       category: category
    }
    
