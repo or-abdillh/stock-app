@@ -7,10 +7,9 @@ const searchProducts = (body, callback) => {
    //Create headers
    const headers = { headers: { token: body.TOKEN } }
       
-   axios.post(`${BASE_URL}/search`, body, headers)
+   axios.get(`${BASE_URL}/search/${body.keyword}/${body.category_product}`, headers)
       .then(res => {
          //Success
-         console.log('res', res)
          if (res.data.status === 200) callback(true, res.data)
       })
       .catch(err => console.log(err))
