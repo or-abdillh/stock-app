@@ -56,6 +56,7 @@ This application can assist users in managing their inventory in an easy and org
 - The local server running at http://localhost:3000/
 - By default username = admin and password = hans4x
 
+
 ### Thanks 
 - Support me with a cup of coffee and other snacks [here ..](https://saweria.co/orabdillh)
 - Don't forget to give me star in this repository 🙏🏻🙏🏻

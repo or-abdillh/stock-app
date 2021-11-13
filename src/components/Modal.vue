@@ -83,8 +83,8 @@
                      loadSuccess.value = true
                   }
                   else isFailed.value = true
-                  emits('reload-product')
                   setTimeout(() => {
+                     emits('reload-product')
                      emits('closeModal')
                      isLoad.value = false
                      loadSuccess.value = false

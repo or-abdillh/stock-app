@@ -43,6 +43,7 @@ const actions = {
          if (res) commit('setProducts', data.results)
       }
       
+      //alert(JSON.stringify(payload))
       searchProducts(payload, getAndSet)
    }
 }

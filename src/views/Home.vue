@@ -44,6 +44,7 @@
    
    //changeCategory or change-keyword
    const search = () => {
+      //alert('search')
       store.dispatch('getProductsBy', bodySearch.value)
    }
    

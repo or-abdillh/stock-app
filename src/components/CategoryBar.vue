@@ -56,6 +56,7 @@
       //Set to state
       store.commit('setCurrentCategory', name)
       currentCategory.value = name
+      //alert(currentCategory.value)
       emits('changeCategory')
    }
    
